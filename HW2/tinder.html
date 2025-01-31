@@ -1,0 +1,96 @@
+<html>
+    <!--Can only use <div>, <span>, <br>, <hr>-->
+    <head>
+        <style>
+            .screen{
+                width: 350px;
+                height: 600px;
+                margin: 50px;
+                border: 1px solid black;
+            }
+            .header{
+                text-align: center;
+                vertical-align: middle;
+                width: 350px;
+                height: 90px;
+                border: 1px solid lightgray;
+            }
+            .small-logo img{
+                margin-top: 10px;
+                width: 50%;
+                display: inline-block; /* removes extra inline spacing */
+            }
+            .profile{
+                margin-left:12px;
+                margin-top: 12px;
+                width: 324px;
+                height: 390px;
+                border: 1px solid lightgray;
+                border-radius: 15px;
+            }
+            .small-profile img{
+                width: 100%;
+                display: inline-block; /* removes extra inline spacing */
+                border-top-left-radius: 15px;  /* Top-left corner rounded */
+                border-top-right-radius: 15px; /* Top-right corner rounded */
+            }
+            .like-button{
+                text-align: center;
+                margin-left:65px;
+                margin-top: 12px;
+                width: 220px;
+                height: 40px;
+                border-radius: 30px;
+                background-color: lightgrey;
+            }
+            .like-text{
+                margin-top: 10px;
+                display: inline-block;
+            }
+            .like-image{
+                width: 20px;
+                display: inline-block;
+            }
+            .about-container{
+                margin: 10px;
+            }
+            .dark{
+                font-weight: bold;
+            }
+            .light{
+                color: lightgrey;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="screen">
+            <div class="header">
+                <div class="small-logo">
+                    <img src="https://coms4170.cs.columbia.edu/2019-spring/assignments/hw2/tinder_images/tinder_logo.png">
+                </div>
+            </div>
+            <div class="profile">
+                <div class="small-profile">
+                    <img src="https://coms4170.cs.columbia.edu/2019-spring/assignments/hw2/tinder_images/tinder_person.png">
+                </div>
+                <div class="about-container">
+                    <div class="dark">
+                        Sean Rad, 29
+                    </div>
+                    <div class="light">
+                        Verified
+                    </div>
+                </div>
+            </div>
+            <div class="like-button">
+                <!--<div class="like-image">
+                    <img src="https://coms4170.cs.columbia.edu/2019-spring/assignments/hw2/tinder_images/heart.png">
+                </div>-->
+                <div class="like-text">
+                    Like Me On Tinder
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
