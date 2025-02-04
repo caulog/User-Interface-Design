@@ -4,16 +4,17 @@
         <style>
             .screen{
                 width: 350px;
-                height: 565px;
+                height: 580px;
                 margin: 50px;
-                border: 1px solid lightgray;
+                border-radius: 15px;
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
             }
             .header{
                 text-align: center;
                 vertical-align: middle;
                 width: 350px;
                 height: 90px;
-                border: 1px solid lightgray;
+                border-bottom: 1px solid #f4f4f4;
             }
             .small-logo img{
                 margin-top: 10px;
@@ -24,8 +25,8 @@
                 margin-left:12px;
                 margin-top: 12px;
                 width: 324px;
-                height: 390px;
-                border: 1px solid lightgray;
+                height: 400px;
+                border: 1px solid #f4f4f4;
                 border-radius: 15px;
             }
             .small-profile img{
@@ -35,30 +36,65 @@
                 border-top-right-radius: 15px; /* Top-right corner rounded */
             }
             .like-button{
-                text-align: center;
-                margin-left:65px;
+                display: flex; /* Aligns children (heart and text) in one row */
+                align-items: center; /* Vertically centers them */
+                justify-content: center;
+                margin-left: 65px;
                 margin-top: 12px;
                 width: 220px;
-                height: 40px;
+                height: 45px;
                 border-radius: 30px;
-                background-color: lightgrey;
+                background-color: #b4afae;
             }
             .like-text{
-                margin-top: 10px;
+                font-family: sans-serif;
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
                 display: inline-block;
             }
-            .like-image{
-                width: 20px;
+            .heart-container{
+                height: 25px;
+                width: 25px;
+                padding: 3px;
+            }
+            .like-image img{
+                width: 100%;
                 display: inline-block;
             }
             .about-container{
-                margin: 10px;
+                font-family: "Verdana";
+                margin-left: 20px;
+                margin-top: 15px;
             }
-            .dark{
+            .personal-container{
+                display: flex;
+                padding-bottom: 7px; 
+            }
+            .verified-container{
+                margin-top: 2px;
+                margin-left: 2px;
+                height: 20px;
+                width: 20px;
+            }
+            .verified-image img{
+                width: 100%;
+                display: inline-block;
+            }
+            .bold{
                 font-weight: bold;
             }
+            .big{
+                font-size: 18px;
+            }
+            .dark{
+                color: #454646; 
+            }
             .light{
-                color: lightgrey;
+                color: #afafaf;
+            }
+            .small{
+                font-size: 14px;
             }
         </style>
     </head>
@@ -75,18 +111,24 @@
                     <img src="https://coms4170.cs.columbia.edu/2019-spring/assignments/hw2/tinder_images/tinder_person.png">
                 </div>
                 <div class="about-container">
-                    <div class="dark">
-                        Sean Rad, 29
+                    <div class="personal-container">
+                        <span class="bold big dark"> Sean Rad, 29 </span>
+                        <div class="verified-container">
+                            <div class="verified-image">
+                                <img src="https://coms4170.cs.columbia.edu/2019-spring/assignments/hw2/tinder_images/tinder_verified.png">
+                            </div>
+                        </div>
                     </div>
-                    <div class="light">
+                    <div class="light small">
                         Verified
                     </div>
                 </div>
             </div>
+
             <div class="like-button">
-                <!--<div class="like-image">
-                    <img src="https://coms4170.cs.columbia.edu/2019-spring/assignments/hw2/tinder_images/heart.png">
-                </div>-->
+                <div class="heart-container">
+                    <span class="like-image"> <img src="https://coms4170.cs.columbia.edu/2019-spring/assignments/hw2/tinder_images/heart.png"> </span>
+                </div>
                 <div class="like-text">
                     Like Me On Tinder
                 </div>
