@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <!--Include  JQuery-->
+        <script src=https://code.jquery.com/jquery-3.3.1.min.js crossorigin="anonymous"></script>
+    
+        <script>
+            // Wait for page to be ready
+            $(document).ready(function(){
+                $("#counter").click(function(){
+                    console.log("I was clicked "+ Math.random())
+                    alert("ALERT!")
+                })
+            })
+        </script>
+
+    </head>
+
+    <body>
+        <!--Button-->
+        <button id="counter" class="btn btn-primary">counter</button>
+    </body>
+    
+</html>
