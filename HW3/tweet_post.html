@@ -11,41 +11,48 @@
                 return charsRemaining;
             }
 
-            //button functionality
-            $(document).ready(function(){
+            function postTweet(){
+                let tweetText = $("#tweet-box").val().trim(); // get tweet
 
-                $("#tweet-box").keyup(function(){
+                if (remaining < 0 || tweetText.length == 0){ return; }
+
+                let username = "ogc2111";
+                let newTweet = `
+                    <div class="tweet">
+                        <span class="username">${username}</span>
+                        <span class="tweet-text">${tweetText}</span>
+                    </div>`;
+
+                $(".posts").prepend(newTweet); // Add the new tweet at the top
+                $("#tweet-box").val("").focus(); // Clear the input box
+                $("#remaining").html(maxChar); // Reset counter
+                $("#remaining").addClass("light"); // Reset color
+            }
+
+            $(document).ready(function(){
+                $("#remaining").html(maxChar);
+
+                $("#tweet-box").on("input", function(){
                     remaining = charsRemaining(this.value.length);
                     
                     if (remaining < 0){
-                        $("#remaining").css({"color": "red", "font-weight": "bold"});
-                        $("#post-button").css({"background-color": "#e9e9e9", "color": "lightgray", "border-color": "#e9e9e9"});
+                        $("#remaining").removeClass("light").addClass("overflow-text");
+                        $("#post-button").removeClass("standard-button").addClass("overflow-button");
                     } else{
-                        $("#remaining").css("color", "lightgray");
-                        $("#post-button").css({"background-color": "lightgray", "color": "black", "border-color": "black"});
+                        $("#remaining").removeClass("overflow-text").addClass("light");
+                        $("#post-button").removeClass("overflow-button").addClass("standard-button");
                     }
 
                     $("#remaining").html(remaining);
                 })
 
-                $("#post-button").click(function(){
-                    let tweetText = $("#tweet-box").val().trim(); // get tweet
+                $("#post-button").click(postTweet);
 
-                    if (remaining < 0 || tweetText.length == 0){
-                        return;
+                $("#tweet-box").keydown(function(event){
+                    if (event.key === "Enter"){
+                        event.preventDefault(); // no newline
+                        postTweet();
                     }
-
-                    let username = "ogc2111";
-                    let newTweet = `
-                        <div class="tweet">
-                            <span class="username">${username}</span>
-                            <span class="tweet-text">${tweetText}</span>
-                        </div>`;
-
-                    $(".posts").prepend(newTweet); // Add the new tweet at the top
-                    $("#tweet-box").val(""); // Clear the input box
-                    $("#remaining").html(maxChar); // Reset counter
-                    $("#remaining").css("color", "lightgray"); // Reset color
                 })
             })
         </script>
@@ -68,6 +75,20 @@
             .light{
                 color: lightgray;
             }
+            .standard-button{
+                background-color: lightgray;
+                color: black;
+                border-color: black;
+            }
+            .overflow-text{
+                color: red;
+                font-weight: bold;
+            }
+            .overflow-button{
+                background-color: #eaeaea;
+                color: #b0b0b0;
+                border-color: #eaeaea;
+            }
             #post-button{
                 background-color: lightgray;
             }
@@ -83,8 +104,8 @@
 
             <br>
 
-            <span id="remaining" class="light">30</span>
-            <button id="post-button" class="btn btn-primary">Post Tweet</button>
+            <span id="remaining" class="light"></span>
+            <button id="post-button" class="btn standard-button">Post Tweet</button>
 
             <div><br><br>POSTS</div>
         
