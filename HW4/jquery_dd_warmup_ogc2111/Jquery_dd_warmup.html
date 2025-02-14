@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Droppable - Default functionality</title>
+    <!-- Replaced with class link
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">-->
+    <style>
+    #draggable{ 
+        width: 100px; 
+        height: 100px; 
+        padding: 0.5em; 
+        float: left; 
+        margin: 10px 10px 10px 0; 
+        cursor: move; /* enable "move" cursor */
+    }
+    #droppable{ 
+        width: 150px; 
+        height: 150px; 
+        padding: 0.5em; 
+        float: left; 
+        margin: 10px; 
+    }
+    .can-drop{
+        background-color: lightgreen !important;
+    }
+    </style>
+
+    <!--JQuery Links from Class-->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--Link to my JS file-->
+    <script src="Jquery_dd_warmup.js"></script>
+    <!--Includes in Copy/Past-->
+    <!--<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>-->
+
+    <!-- Moved og script to JS file-->
+  </head>
+    <body>
+   
+  <div id="draggable" class="ui-widget-content">
+    <p>Drag me to my target</p>
+  </div>
+   
+  <div id="droppable" class="ui-widget-header">
+    <p>Drop here</p>
+  </div>
+   
+  </body>
+</html>
