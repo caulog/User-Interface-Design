@@ -1,4 +1,6 @@
 /*css styling*/
+
+/* Create bootstrap compatable autocomplete*/
 .ui-autocomplete {
     max-height: 200px;
     overflow-y: auto;
@@ -6,20 +8,9 @@
     border: 1px solid #ccc;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-  }
-.draggable{ 
-    cursor: move; /* enable "move" cursor */
 }
-.can-drag{
-    background-color: lightyellow !important;
-}
-#droppable{ 
-    width: 150px; 
-    height: 150px; 
-    padding: 0.5em; 
-    float: left; 
-    margin: 10px; 
-}
+
+/* Headers and Body */
 .container{
     margin: 10px;
 }
@@ -31,10 +22,10 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
 }
-.sales-row{
+.row{
     display: flex;
     align-items: flex-end; /* Align text at the bottom */
-    min-height: 45px; 
+    min-height: 10px; 
 }
 .trash{
     font-size: 18px;
@@ -45,9 +36,43 @@
     background-color: lightgrey;
     vertical-align: middle;
 }
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    height: 12px;
+}
+#clientName{
+    width: 100%;
+}
+#reamsSold{
+    width: 100%; 
+}
+.sales-row{
+    display: flex;
+    align-items: flex-end; 
+    min-height: 45px; 
+}
+
+/* Drag & Drop Styling */
+.draggable{ 
+    cursor: move;
+}
+.can-drag{
+    background-color: lightyellow !important;
+}
 .can-drop{
     background-color: yellow !important;
 }
+#droppable{ 
+    width: 150px; 
+    height: 150px; 
+    padding: 0.5em; 
+    float: left; 
+    margin: 10px; 
+}
+
+/* Buttons */
 #submit-button{
     background-color: rgb(29, 172, 220);
     color: white; 
@@ -56,20 +81,3 @@
     margin-left: 35px;
     background-color: orange;
 }
-#reamsSold{
-    width: 100%; 
-}
-#clientName{
-    width: 100%;
-}
-.error-message {
-    color: red;
-    font-size: 14px;
-    text-align: center;
-    height: 12px; /* Fixed height to keep space reserved */
-  }
-  .row{
-    display: flex;
-    align-items: flex-end; /* Align text at the bottom */
-    min-height: 10px; 
-  }

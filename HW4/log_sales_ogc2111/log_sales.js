@@ -1,7 +1,9 @@
-//javascript
+// Initialize Variables
 
+// Salesperson
 const salesperson = "Dwight Schrute"
   
+// Existing clients
 let clients = [
   "Shake Shack",
   "Toast",
@@ -16,7 +18,7 @@ let clients = [
   "Taco Bell",
 ];
 
-// sales data (Model)
+// Sales data (Model)
 let sales = [
   {
     "salesperson": "James D. Halpert",
@@ -43,39 +45,25 @@ function initializeReamsInput() { $("#reamsSold").focus(); }
 
 // Display the error message and set its text
 function showError(message, errorClass) {
-  $(errorClass).find("#error-text").text(message); // Set error message text
-  $(errorClass).show(); // Show the error message container
+  $(errorClass).find("#error-text").text(message);
+  $(errorClass).show();
 }
 
-// Make sales rows draggable
-function initializeDraggable(){
+// Draggable row settings
+// Revert if dropped outside valid area
+// Pale yellow on hover and select
+function initializeDraggable() {
   $(".draggable").draggable({
-    revert: "invalid", // revert to original position
-
-    start: function(event, ui) {
-      $(this).addClass("can-drag"); // Add class when drag starts
-    },
-
-    stop: function(event, ui) {
-      $(this).removeClass("can-drag"); // Remove class when drag stops
-    }
-  });
-
-  // Apply hover effect for draggable items
-  $(".draggable").hover(
-    function() { // When the mouse enters
-      $(this).addClass("can-drag");
-    },
-    function() { // When the mouse leaves
-      $(this).removeClass("can-drag");
-    }
+    revert: "invalid",             
+  }).hover(
+    function() { $(this).addClass("can-drag"); },  
+    function() { $(this).removeClass("can-drag"); }
   );
 }
 
-// make sales list from sales model
+// Make sales list from sales (Model)
 function renderSales(){
   $(".container .sales-row").remove();
-    
   sales.forEach(function(sale, index) {
     const rowHTML = `
       <div class="sales-row draggable" data-index="${index}">
@@ -90,7 +78,6 @@ function renderSales(){
     `;
     $(".container").append(rowHTML);
   });
-
   initializeDraggable();
 }
 
@@ -111,19 +98,19 @@ function addSale(){
     return;
   }
   // ream error
-if (isNaN(reams) || reams <= 0) {
-  showError("", "#client-error"); // Clear client error message if any
-  // If reams is not a number
-  if (isNaN(reams)) {
-    showError("Invalid Character. Enter number of reams sold.", "#ream-error");
+  if (isNaN(reams) || reams <= 0) {
+    showError("", "#client-error"); // Clear client error message if any
+    // If reams is not a number
+    if (isNaN(reams) && reams !="") {
+      showError("Invalid Character. Enter number of reams sold.", "#ream-error");
+      initializeReamsInput();
+      return;
+    }
+    // If reams is a number but less than or equal to 0
+    showError("Enter number of reams sold.", "#ream-error");
     initializeReamsInput();
     return;
   }
-  // If reams is a number but less than or equal to 0
-  showError("Enter number of reams sold.", "#ream-error");
-  initializeReamsInput();
-  return;
-}
 
   // Hide error message if the input is valid
   showError("", "#client-error");
@@ -153,16 +140,13 @@ $(document).ready(function() {
   // Apply jQuery UI autocomplete
   $("#clientName").autocomplete({ source: clients });
 
+  // Initialize page
   showError("", "#client-error");
   showError("", "#ream-error");
-
-
-  // Call renderSales() initially to display the sales data
   renderSales();
-
   initializeClientInput();
 
-  // Make the trash area droppable
+  // Drag and Drop delete
   $(".trash").droppable({
     accept: ".draggable", // Only accept elements with the 'draggable' class
     over: function(event, ui) {
@@ -189,11 +173,9 @@ $(document).ready(function() {
     }
   });
 
-
-  // Add click event listener for delete buttons (Controller)
+  // Delete button (Controller) delete
   $(document).on("click", ".delete-button", function() {
-    // Get the index of the sale to delete (from data-index attribute)
-    const index = $(this).closest(".row").data("index");
+    const index = $(this).closest(".sales-row").data("index");  // Index of sales to delete
 
     // Delete the sale record from the sales data (Model)
     sales.splice(index, 1);
@@ -202,12 +184,8 @@ $(document).ready(function() {
     renderSales();
   });
 
-  // Add a new sale when the button is clicked
+  // Add new sales
   $("#submit-button").click(function() { addSale(); });
+  $("#reamsSold").keydown(function(event){ if (event.key === "Enter"){ addSale(); }});
 
-  // Add a new sale when enter is pressed in reamsSold textbox
-  $("#reamsSold").keydown(function(event){  
-    if (event.key === "Enter"){ addSale();}
-  });
-
-  });
+});
