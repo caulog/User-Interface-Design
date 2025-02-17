@@ -23,6 +23,14 @@
     
     <body>
         <div class="container">
+            <div class="row">
+                <div class="col-10">
+                    Name: Olivia Caulfield
+                </div>
+                <div class="col-2">
+                    UNI: OGC2111
+                </div>
+            </div>
 
             <div class="row">
                 <div class="header">
@@ -34,9 +42,16 @@
             </div>
 
             <div class="row">
+                <div class="col-3"> </div>
+                <div id="client-error" class="col-4 error-message" style="display: none;"> <p id="error-text"></p> </div>
+                <div id="ream-error"class="col-3 error-message" style="display: none;"> <p id="error-text"></p> </div>
+                <div class="col-2"> </div>
+            </div>
+
+            <div class="row">
                 <div class="col-3"> Log your paper sales: </div>
-                <div class="col-4"> <input type="text" id="clientName" placeholder="client"> </div>
-                <div class="col-3"> <input type="number" id="reamsSold" class="form-control" placeholder="# reams" min="1"> </div>
+                <div class="col-4"> <input type="text" id="clientName" placeholder="Client"> </div>
+                <div class="col-3"> <input type="text" id="reamsSold" placeholder="# Reams"> </div>
                 <div class="col-2"> <button id="submit-button" class="btn standard-button">Submit</button> </div>
             </div>
         </div>
