@@ -8,12 +8,10 @@
     z-index: 1000;
   }
 .draggable{ 
-    /*width: 100px; 
-    height: 100px; 
-    padding: 0.5em; 
-    float: left; 
-    margin: 10px 10px 10px 0; */
     cursor: move; /* enable "move" cursor */
+}
+.can-drag{
+    background-color: lightyellow !important;
 }
 #droppable{ 
     width: 150px; 
@@ -48,12 +46,12 @@
     vertical-align: middle;
 }
 .can-drop{
-    background-color: lightgreen !important;
+    background-color: yellow !important;
 }
 #submit-button{
     background-color: rgb(29, 172, 220);
     color: white; 
 }
-#delete-button{
+.delete-button{
     background-color: orange;
 }
