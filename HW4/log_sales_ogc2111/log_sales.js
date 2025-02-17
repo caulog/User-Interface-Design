@@ -81,50 +81,50 @@ function renderSales(){
   initializeDraggable();
 }
 
-function addSale(){
+// Error handling function
+function getErrors() {
+  const client = $("#clientName").val().trim();
+  const reamsInput = $("#reamsSold").val().trim();
+  const reams = parseInt(reamsInput, 10);
+
+  let hasError = false;
+
+  // Validate client input
+  if (client === "") {
+    showError("Enter a client.", "#client-error");
+    hasError = true;
+  } else {
+    showError("", "#client-error"); // Clear client error if valid
+  }
+
+  // Validate reams input
+  if (reamsInput === "") {
+    showError("Enter number of reams sold.", "#ream-error");
+    hasError = true;
+  } else if (isNaN(reams) || reams <= 0) {
+    showError("Invalid Character. Enter a valid number of reams sold.", "#ream-error");
+    hasError = true;
+  } else {
+    showError("", "#ream-error"); // Clear ream error if valid
+  }
+
+  return hasError;
+}
+
+// Add a new sale & error handling
+function addSale() {
+  if (getErrors()) return; // Stop execution if there are errors
+
   const client = $("#clientName").val().trim();
   const reams = parseInt($("#reamsSold").val().trim(), 10);
-
-  // client error
-  if (client === "") {
-    initializeClientInput();
-    if (isNaN(reams) || reams <= 0) {
-      showError("Enter a client.", "#client-error");
-      showError("Enter number of reams sold.", "#ream-error");
-      return;
-    }
-    showError("", "#ream-error");
-    showError("Enter a client.", "#client-error");
-    return;
-  }
-  // ream error
-  if (isNaN(reams) || reams <= 0) {
-    showError("", "#client-error"); // Clear client error message if any
-    // If reams is not a number
-    if (isNaN(reams) && reams !="") {
-      showError("Invalid Character. Enter number of reams sold.", "#ream-error");
-      initializeReamsInput();
-      return;
-    }
-    // If reams is a number but less than or equal to 0
-    showError("Enter number of reams sold.", "#ream-error");
-    initializeReamsInput();
-    return;
-  }
-
-  // Hide error message if the input is valid
-  showError("", "#client-error");
-  showError("", "#ream-error");
 
   // Add the new client to the clients list if it doesn't exist already
   if (!clients.includes(client)) {
     clients.push(client);
-  
-    // Update the autocomplete source with the new client list
     $("#clientName").autocomplete("option", "source", clients);
   }
 
-  // Add new sale to the beginning of the sales array (Model)
+  // Add new sale to the sales array (Model)
   sales.unshift({ salesperson, client, reams });
 
   // Clear input fields
@@ -149,39 +149,20 @@ $(document).ready(function() {
   // Drag and Drop delete
   $(".trash").droppable({
     accept: ".draggable", // Only accept elements with the 'draggable' class
-    over: function(event, ui) {
-      $(this).addClass("can-drop"); // When a row enters the trash area
-    },
-    out: function(event, ui) {
-      $(this).removeClass("can-drop"); // When a row leaves the trash area
-    },
-    drop: function(event, ui) {
-      $(this)
-        .removeClass("can-drop") // Remove the 'can-drop' class
-        .find("p")
-        .html("Dropped!"); // Optional: Change the trash text after a drop
-
-      // Get the index of the dragged item
-      const droppedRow = ui.helper.closest(".row");
-      const index = droppedRow.data("index");
-
-      // Delete the sale record from the sales data (Model)
-      sales.splice(index, 1);
-
-      // Re-render the sales records view to reflect the deletion (View)
-      renderSales();
+    over: function(event, ui) { $(this).addClass("can-drop"); },
+    out: function(event, ui) { $(this).removeClass("can-drop"); },
+    drop: function(event, ui) { $(this).removeClass("can-drop");
+      const index = ui.helper.closest(".sales-row").data("index");  // Index of sales to delete
+      sales.splice(index, 1);                                       // Delete sale from the Model
+      renderSales();                                                // Re-render the view
     }
   });
 
   // Delete button (Controller) delete
   $(document).on("click", ".delete-button", function() {
-    const index = $(this).closest(".sales-row").data("index");  // Index of sales to delete
-
-    // Delete the sale record from the sales data (Model)
-    sales.splice(index, 1);
-
-    // Re-render the sales records view to reflect the deletion (View)
-    renderSales();
+    const index = $(this).closest(".sales-row").data("index");      // Index of sales to delete
+    sales.splice(index, 1);                                         // Delete sale from the Model
+    renderSales();                                                  // Re-render the view
   });
 
   // Add new sales
