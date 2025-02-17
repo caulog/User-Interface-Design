@@ -1,1 +1,51 @@
 /*css styling*/
+.draggable{ 
+    /*width: 100px; 
+    height: 100px; 
+    padding: 0.5em; 
+    float: left; 
+    margin: 10px 10px 10px 0; */
+    cursor: move; /* enable "move" cursor */
+}
+#droppable{ 
+    width: 150px; 
+    height: 150px; 
+    padding: 0.5em; 
+    float: left; 
+    margin: 10px; 
+}
+.container{
+    margin: 10px;
+}
+.header{
+    background-color: lightblue;
+    height: 150px;
+    padding: 20px;
+    padding-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+.row{
+    display: flex;
+    align-items: flex-end; /* Align text at the bottom */
+    min-height: 45px; 
+}
+.trash{
+    font-size: 18px;
+    padding: 10px; 
+    margin-top: 10px;
+    height: 45px;
+    border: 1px solid black;
+    background-color: lightgrey;
+    vertical-align: middle;
+}
+.can-drop{
+    background-color: lightgreen !important;
+}
+#submit-button{
+    background-color: rgb(29, 172, 220);
+    color: white; 
+}
+#delete-button{
+    background-color: orange;
+}
