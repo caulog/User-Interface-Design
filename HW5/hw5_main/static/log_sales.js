@@ -1,4 +1,5 @@
-// Initialize Variables
+// Variables for sales and client data
+// now in server.py
 
 // Salesperson
 const salesperson = "Dwight Schrute"
@@ -28,12 +29,11 @@ function initializeDraggable() {
 }
 
 // Make sales list from sales (Model)
-function renderSales(){
-  //sales = data; 
+function display_sales_list(sales){
   $(".container .sales-row").remove();
-  sales.forEach(function(sale, index) {
+  sales.forEach(function(sale) {
     const rowHTML = `
-      <div class="sales-row draggable" data-index="${index}">
+      <div class="sales-row draggable" id="${sale.id}">
           <div class="draggable"></div>
           <div class="col-3">${sale.salesperson}</div>
           <div class="col-4">${sale.client}</div>
@@ -45,6 +45,7 @@ function renderSales(){
     `;
     $(".sales-container").append(rowHTML);
   });
+  $("#clientName").autocomplete("option", "source", clients);
   initializeDraggable();
 }
 
@@ -77,16 +78,6 @@ function getErrors(client, reamsInput, reams) {
   return hasError;
 }
 
-// update autocomplete
-function updateAutocomplete(client){
-  // Add the new client to the clients list if it doesn't exist already
-  if (!clients.includes(client)) {
-    clients.push(client);
-    $("#clientName").autocomplete("option", "source", clients);
-  }
-
-}
-
 // Add a new sale & error handling
 function addSale() {
   let client = $("#clientName").val().trim();
@@ -95,21 +86,35 @@ function addSale() {
 
   if (getErrors(client, reamsInput, reams)) return; // Stop execution if there are errors
 
-  let data_to_save = {"salesperson" : salesperson, "client" : client, "reams" : reams}
+  let new_sale = {"salesperson" : salesperson, "client" : client, "reams" : reams}
 
+  save_sale(new_sale);
+}
+
+function save_sale(new_sale){
   $.ajax({
     type: "POST",
     url: "save_sale",                
     dataType : "json",
     contentType: "application/json; charset=utf-8",
-    data : JSON.stringify(data_to_save),
+    data : JSON.stringify(new_sale),
     success: function(result){
-        let all_data = result["data"]
+        let all_data = result["sales"]
+        let updated_clients = result["clients"]
         console.log("success addSale")
-        console.log(all_data)
         data = all_data
-        // THIS WILL BE render_salesdisplayNames(data)
-        // this will be clearing input field$client = $("#clientName").val().trim();
+        clients = updated_clients
+        
+        // Update autocomplete if neccesary
+        $("#clientName").autocomplete("option", "source", updated_clients);
+
+        // Clear input fields
+        $("#clientName").val("");
+        $("#reamsSold").val("");
+        initializeClientInput();
+
+        // Update the view
+        display_sales_list(data);
     },
     error: function(request, status, error){
         console.log("Error");
@@ -117,25 +122,28 @@ function addSale() {
         console.log(status)
         console.log(error)
     }
-});
-
-
-  updateAutocomplete(client);
-
-  // Add new sale to the sales array (Model)
-  sales.unshift({ salesperson, client, reams });
-
-  // Clear input fields
-  $("#clientName").val("");
-  $("#reamsSold").val("");
-  initializeClientInput();
-
-  // Update the view
-  renderSales();
+  });
 }
 
 function delete_sale(id){
-  sales.splice(id, 1)
+  $.ajax({
+    type: "POST",
+    url: "delete_sale",
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    data: JSON.stringify({ "id": id }),
+    success: function(result) {
+      let all_data = result["sales"];
+      console.log("Deleted sale, updated sales:", all_data);
+      data = all_data;
+      
+      // Update UI
+      display_sales_list(data);
+    },
+    error: function(request, status, error) {
+      console.log("Error deleting sale:", request, status, error);
+    }
+  });
 }
 
 $(document).ready(function() {
@@ -145,7 +153,7 @@ $(document).ready(function() {
   // Initialize page
   showError("", "#client-error");
   showError("", "#ream-error");
-  renderSales();
+  display_sales_list(sales);
   initializeClientInput();
 
   // Drag and Drop delete
@@ -154,23 +162,19 @@ $(document).ready(function() {
     over: function(event, ui) { $(this).addClass("can-drop"); },
     out: function(event, ui) { $(this).removeClass("can-drop"); },
     drop: function(event, ui) { $(this).removeClass("can-drop");
-      const index = ui.helper.closest(".sales-row").data("index");  // Index of sales to delete
-      delete_sale(index);
-      renderSales();                                                // Re-render the view
+      let id = ui.draggable.attr("id");
+      delete_sale(id); // Make AJAX call to delete
     }
   });
 
   // Delete button (Controller) delete
   $(document).on("click", ".delete-button", function() {
-    const index = $(this).closest(".sales-row").data("index");      // Index of sales to delete
-    delete_sale(index);
-    renderSales();                                                  // Re-render the view
+    let id = $(this).closest(".sales-row").attr("id");
+    delete_sale(id);
   });
 
   // Add new sales
-  $("#submit-button").click(function() { 
-    addSale(); 
-  });
+  $("#submit-button").click(function() { addSale(); });
   $("#reamsSold").keydown(function(event){ if (event.key === "Enter"){ addSale(); }});
 
 });
