@@ -2,40 +2,6 @@
 
 // Salesperson
 const salesperson = "Dwight Schrute"
-  
-// Existing clients
-let clients = [
-  "Shake Shack",
-  "Toast",
-  "Computer Science Department",
-  "Teacher's College",
-  "Starbucks",
-  "Subsconsious",
-  "Flat Top",
-  "Joe's Coffee",
-  "Max Caffe",
-  "Nussbaum & Wu",
-  "Taco Bell",
-];
-
-// Sales data (Model)
-let sales = [
-  {
-    "salesperson": "James D. Halpert",
-    "client": "Shake Shack",
-    "reams": 100
-  },
-  {
-    "salesperson": "Stanley Hudson",
-    "client": "Toast",
-    "reams": 400
-  },
-  {
-    "salesperson": "Michael G. Scott",
-    "client": "Computer Science Department",
-    "reams": 1000
-  },
-];
 
 // Focus the cursor in the client input box
 function initializeClientInput() { $("#clientName").focus(); }
@@ -63,6 +29,7 @@ function initializeDraggable() {
 
 // Make sales list from sales (Model)
 function renderSales(){
+  //sales = data; 
   $(".container .sales-row").remove();
   sales.forEach(function(sale, index) {
     const rowHTML = `
@@ -82,11 +49,7 @@ function renderSales(){
 }
 
 // Error handling function
-function getErrors() {
-  const client = $("#clientName").val().trim();
-  const reamsInput = $("#reamsSold").val().trim();
-  const reams = parseInt(reamsInput, 10);
-
+function getErrors(client, reamsInput, reams) {
   let hasError = false;
 
   // Validate reams input
@@ -114,18 +77,50 @@ function getErrors() {
   return hasError;
 }
 
-// Add a new sale & error handling
-function addSale() {
-  if (getErrors()) return; // Stop execution if there are errors
-
-  const client = $("#clientName").val().trim();
-  const reams = parseInt($("#reamsSold").val().trim(), 10);
-
+// update autocomplete
+function updateAutocomplete(client){
   // Add the new client to the clients list if it doesn't exist already
   if (!clients.includes(client)) {
     clients.push(client);
     $("#clientName").autocomplete("option", "source", clients);
   }
+
+}
+
+// Add a new sale & error handling
+function addSale() {
+  let client = $("#clientName").val().trim();
+  let reamsInput = $("#reamsSold").val().trim();
+  let reams = parseInt(reamsInput, 10);
+
+  if (getErrors(client, reamsInput, reams)) return; // Stop execution if there are errors
+
+  let data_to_save = {"salesperson" : salesperson, "client" : client, "reams" : reams}
+
+  $.ajax({
+    type: "POST",
+    url: "save_sale",                
+    dataType : "json",
+    contentType: "application/json; charset=utf-8",
+    data : JSON.stringify(data_to_save),
+    success: function(result){
+        let all_data = result["data"]
+        console.log("success addSale")
+        console.log(all_data)
+        data = all_data
+        // THIS WILL BE render_salesdisplayNames(data)
+        // this will be clearing input field$client = $("#clientName").val().trim();
+    },
+    error: function(request, status, error){
+        console.log("Error");
+        console.log(request)
+        console.log(status)
+        console.log(error)
+    }
+});
+
+
+  updateAutocomplete(client);
 
   // Add new sale to the sales array (Model)
   sales.unshift({ salesperson, client, reams });
@@ -137,6 +132,10 @@ function addSale() {
 
   // Update the view
   renderSales();
+}
+
+function delete_sale(id){
+  sales.splice(id, 1)
 }
 
 $(document).ready(function() {
@@ -156,7 +155,7 @@ $(document).ready(function() {
     out: function(event, ui) { $(this).removeClass("can-drop"); },
     drop: function(event, ui) { $(this).removeClass("can-drop");
       const index = ui.helper.closest(".sales-row").data("index");  // Index of sales to delete
-      sales.splice(index, 1);                                       // Delete sale from the Model
+      delete_sale(index);
       renderSales();                                                // Re-render the view
     }
   });
@@ -164,12 +163,14 @@ $(document).ready(function() {
   // Delete button (Controller) delete
   $(document).on("click", ".delete-button", function() {
     const index = $(this).closest(".sales-row").data("index");      // Index of sales to delete
-    sales.splice(index, 1);                                         // Delete sale from the Model
+    delete_sale(index);
     renderSales();                                                  // Re-render the view
   });
 
   // Add new sales
-  $("#submit-button").click(function() { addSale(); });
+  $("#submit-button").click(function() { 
+    addSale(); 
+  });
   $("#reamsSold").keydown(function(event){ if (event.key === "Enter"){ addSale(); }});
 
 });

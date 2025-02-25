@@ -49,6 +49,8 @@ def add_name():
     json_data = request.get_json()   
     name = json_data["name"] 
     
+    print(json_data)
+
     # add new entry to array with 
     # a new id and the name the user sent in JSON
     current_id += 1
@@ -65,7 +67,7 @@ def add_name():
 
 
 if __name__ == '__main__':
-   app.run(debug = True, port=5001)
+   app.run(debug = True, port=5000)
 
 
 

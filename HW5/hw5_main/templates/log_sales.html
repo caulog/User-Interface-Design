@@ -5,6 +5,12 @@
 
     <script type="text/javascript" src="{{ url_for('static', filename = 'log_sales.js') }}"></script>
 
+
+    <script>
+        let sales = {{ sales | tojson }};
+        let clients = {{ clients | tojson }};
+    </script>
+
     <div class="container">
         <div class="sales-container">
             <div class="row">

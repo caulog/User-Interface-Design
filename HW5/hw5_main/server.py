@@ -47,33 +47,59 @@ def hello_world():
 
 @app.route('/infinity')
 def people():
-    return render_template('log_sales.html', data=sales)  
+    return render_template('log_sales.html', sales=sales, clients=clients)  
 
 
 # AJAX FUNCTIONS
 
-# ajax for people.js
-@app.route('/add_name', methods=['GET', 'POST'])
-def add_name():
-    global data 
-    global current_id 
+# ajax for log_sales.js
+@app.route('/save_sale', methods=['GET', 'POST'])
+def save_sale():
 
-    json_data = request.get_json()   
-    name = json_data["name"] 
-    
-    # add new entry to array with 
-    # a new id and the name the user sent in JSON
-    current_id += 1
-    new_id = current_id 
-    new_name_entry = {
-        "name": name,
-        "id":  current_id
+    json_data = request.get_json()  
+    salesperson = "Dwight Schrute"
+    client = json_data["client"]
+    reams = json_data["reams"]
+
+    print(sales)
+
+    new_sales_entry = {
+        "salesperson": salesperson,
+        "client" : client,
+        "reams" : reams
     }
-    data.append(new_name_entry)
 
-    #send back the WHOLE array of data, so the client can redisplay it
-    return jsonify(data = data)
- 
+    # add new sale to front of array
+    sales.insert(0, new_sales_entry)
+
+    print(sales)
+
+    return jsonify(sales=sales)
+
+
+ # ajax for people.js
+@app.route('/delete_sale', methods=['GET', 'POST'])
+def delete_sale():
+
+    json_data = request.get_json()  
+    salesperson = "Dwight Schrute"
+    client = json_data["client"]
+    reams = json_data["reams"]
+
+    print(sales)
+
+    new_sales_entry = {
+        "salesperson": salesperson,
+        "client" : client,
+        "reams" : reams
+    }
+
+    # add new sale to front of array
+    sales.insert(0, new_sales_entry)
+
+    print(sales)
+
+    return jsonify(sales=sales)
 
 
 if __name__ == '__main__':
