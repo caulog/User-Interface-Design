@@ -10,12 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!query) {
           // Set focus back to the search input
           searchInput.focus();
-  
           event.preventDefault(); // Stop the form submission
-  
-          // Clear the search input of any whitespace
           searchInput.value = "";
-  
           return; // Exit the function, so nothing happens
         }
   
