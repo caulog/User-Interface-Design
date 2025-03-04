@@ -1,8 +1,21 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<h2>{{ cafe['name'] }}</h2>
+<p><strong>Address:</strong> {{ cafe['address'] }}</p>
+<p><strong>Description:</strong> {{ cafe['description'] }}</p>
+<p><strong>Rating:</strong> {{ cafe['rating'] }}</p>
+<p><strong>Outlets:</strong> {{ cafe['outlets'] }}</p>
+<p><strong>Wi-Fi:</strong> {{ cafe['wifi'] }}</p>
+<p><strong>Meeting Friendly:</strong> {{ cafe['meeting_friendly'] }}</p>
+<p><strong>Food:</strong> {{ cafe['food'] }}</p>
+<p><strong>Drink:</strong> {{ cafe['drink'] }}</p>
+<p><strong>Pastry:</strong> {{ cafe['pastry'] }}</p>
+<p><strong>Seating Type:</strong> {{ cafe['seating_type'] | join(', ') }}</p>
+<p><strong>Noise Level:</strong> {{ cafe['noise_level'] }}</p>
+<p><strong>Lighting:</strong> {{ cafe['lighting'] }}</p>
 
-<b><br>Hello {{id}}!</b>
+<img src="{{ cafe['image'] }}" alt="Cafe Image" width="300px">
 
 {% endblock %}
 
