@@ -9,7 +9,9 @@
         {% for cafe_dict in cafes %}
             {% for cafe_id, cafe in cafe_dict.items() %}
                 <li>
-                    <a href="{{ url_for('view', id=cafe.id) }}">{{ cafe.name }}</a>
+                    <a href="{{ url_for('view', id=cafe['id']) }}">
+                        {{ cafe['name'] }}
+                    </a>
                 </li>
             {% endfor %}
         {% endfor %}
@@ -17,6 +19,10 @@
 
     <script src="{{ url_for('static', filename='cafes.js') }}"></script>
 {% endblock %}
+
+
+
+
 
 
 

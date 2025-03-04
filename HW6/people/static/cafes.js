@@ -1,13 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("/get_cafes")
-        .then(response => response.json())
-        .then(data => {
-            const cafeList = document.getElementById("cafe-list");
-            Object.values(data).forEach(cafe => {
-                let listItem = document.createElement("li");
-                listItem.textContent = cafe.name;
-                cafeList.appendChild(listItem);
-            });
-        })
-        .catch(error => console.error("Error fetching cafes:", error));
-});
+    const searchForm = document.getElementById("search-form");
+    const searchInput = document.getElementById("search-input");
+  
+    if (searchForm && searchInput) {
+      searchForm.addEventListener("submit", function (event) {
+        const query = searchInput.value.trim(); // Get the search query and trim whitespace
+  
+        // If the query is empty or just whitespace, prevent the form from submitting
+        if (!query) {
+          // Set focus back to the search input
+          searchInput.focus();
+  
+          event.preventDefault(); // Stop the form submission
+  
+          // Clear the search input of any whitespace
+          searchInput.value = "";
+  
+          return; // Exit the function, so nothing happens
+        }
+  
+        // If the query is valid, the form will submit as usual
+      });
+    }
+  });

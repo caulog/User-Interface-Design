@@ -35,10 +35,10 @@
             <a class="nav-link" href="/cafe">NYC Cafes</a>
           </div>
           <!-- Align search bar to the right -->
-          <form class="d-flex" action="/search" method="get">
-            <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+          <form id="search-form" class="d-flex" action="/search" method="get">
+            <input id="search-input" class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>          
+          </form>        
         </div>
       </div>
     </nav>
@@ -49,6 +49,7 @@
         {% endblock %}
     </div>
 
+    <script src="{{ url_for('static', filename='cafes.js') }}"></script>
   </body>
 </html>
 
