@@ -1,7 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<br>
 <h2>{{ cafe['name'] }}</h2>
+<br>
+<img src="{{ cafe['image'] }}" alt="Cafe Image" width="400px">
+<br>
+<br>
 <p><strong>Address:</strong> {{ cafe['address'] }}</p>
 <p><strong>Description:</strong> {{ cafe['description'] }}</p>
 <p><strong>Rating:</strong> {{ cafe['rating'] }}</p>
@@ -14,9 +19,7 @@
 <p><strong>Seating Type:</strong> {{ cafe['seating_type'] | join(', ') }}</p>
 <p><strong>Noise Level:</strong> {{ cafe['noise_level'] }}</p>
 <p><strong>Lighting:</strong> {{ cafe['lighting'] }}</p>
-
-<img src="{{ cafe['image'] }}" alt="Cafe Image" width="300px">
-
+<br>
 {% endblock %}
 
 
