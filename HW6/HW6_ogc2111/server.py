@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 current_id = 10
-fav_cafes = ["1", "3", "5"]
+fav_cafes = ["1", "3", "6"]
 data = [
     {
     "1": {
