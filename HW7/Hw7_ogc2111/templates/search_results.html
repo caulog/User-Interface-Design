@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<b><br>Your Headquarters for Remote Work-Friendly Cafes!</b>
+    <br>
+    <br>
+<h2>Search results for "{{ query }}":</h2>
+<ul>
+    {% for cafe in results %}
+        <li>
+            <a href="{{ url_for('view', id=cafe['id']) }}">{{ cafe['name'] }}</a>
+        </li>
+    {% else %}
+        <li>No results found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+

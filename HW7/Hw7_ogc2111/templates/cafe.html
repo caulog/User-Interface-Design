@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <b><br>Your Headquarters for Remote Work-Friendly Cafes!</b>
+    <br>
+    <br>
+    <h2>See all our NYC Cafes:</h2>
+    <ul id="cafe-list">
+        {% for cafe_dict in cafes %}
+            {% for cafe_id, cafe in cafe_dict.items() %}
+                <li>
+                    <a href="{{ url_for('view', id=cafe['id']) }}">
+                        {{ cafe['name'] }}
+                    </a>
+                </li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+
+    <script src="{{ url_for('static', filename='cafes.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+

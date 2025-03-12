@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <b><br>Your Headquarters for Remote Work-Friendly Cafes!</b>
+    <br>
+    <br>
+    <h2>Popular Cafes This Week:</h2>
+    <ul>
+        {% for cafe in fav_cafes %}
+            <li>
+                <a href="{{ url_for('view', id=cafe['id']) }}">{{ cafe['name'] }}</a>
+            </li>
+        {% else %}
+            <li>No popular cafes found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
