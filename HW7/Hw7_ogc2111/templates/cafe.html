@@ -13,7 +13,7 @@
         {% for cafe_dict in cafes %}
             {% for cafe_id, cafe in cafe_dict.items() %}
                 <li>
-                    <a class ="clickable" href="{{ url_for('view', id=cafe['id']) }}">
+                    <a class="cafe-link" href="{{ url_for('view', id=cafe['id']) }}">
                         {{ cafe['name'] }}
                     </a>
                 </li>

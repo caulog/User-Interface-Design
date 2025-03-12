@@ -8,18 +8,34 @@
 </div>
 
 <div class="container mt-4">
-    <h2>Search results for "{{ query }}":</h2>
-    <ul class = "dark-grey">
+    <!-- Display the number of cafes that match the query -->
+    <h2>{{ results|length }} 
+        {% if results|length == 1 %}
+            cafe matches
+        {% else %}
+            cafes match
+        {% endif %}
+            the search for "{{ query }}":
+    </h2>
+    
+    <ul class="dark-grey">
         {% for cafe in results %}
             <li>
-                <a class ="clickable" href="{{ url_for('view', id=cafe['id']) }}">{{ cafe['name'] }}</a>
+                <!-- Display Cafe Name with Highlighted Query -->
+                <a class="cafe-link" href="{{ url_for('view', id=cafe['id']) }}">{{ cafe['name'] | highlight(query) | safe }}</a>
+
+                <!-- Display Description with reduced margin -->
+                <p class="mt-2"><span class="light-grey">About:</span> {{ cafe['description'] | highlight(query) | safe }}</p>
+
+                <!-- Display Seating Options with consistent spacing -->
+                <p class="mt-2"><span class="light-grey">Seating Options:</span> {{ cafe['seating_type'] | join(', ') | highlight(query) | safe }}</p>
             </li>
         {% else %}
             <li>No results found.</li>
         {% endfor %}
     </ul>
 </div>
-
+<br>
 {% endblock %}
 
 

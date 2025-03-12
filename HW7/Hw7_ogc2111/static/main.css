@@ -44,8 +44,8 @@
     max-width: 600px; /* Adjust width to fit well */
 }
 .cafe-image {
-    width: 600px;  /* Fixed width */
-    height: 400px; /* Fixed height */
+    width: 550px;  /* Fixed width */
+    height: 350px; /* Fixed height */
     object-fit: cover; /* Ensures cropping instead of stretching */
     border-radius: 5px;
 }
@@ -136,3 +136,14 @@
     color: #f8f9fa; 
 }
 /* END popular cafes formatting*/
+
+.highlight {
+    background-color: #ffcc8c;  /* Or any color you prefer */
+    font-weight: bold;
+}
+.cafe-link {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #cb7969;
+}

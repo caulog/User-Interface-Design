@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import Response, request, jsonify
+import re
 app = Flask(__name__)
 
 
@@ -201,6 +202,22 @@ data = [
     }
 ]
 
+def highlight_match(text, query):
+    """Highlights the query within the text using a span tag."""
+    if not query:
+        return text
+    # Escape special characters in the query and apply the regex
+    escaped_query = re.escape(query)
+    highlighted_text = re.sub(
+        f"({escaped_query})", 
+        r'<span class="highlight">\1</span>', 
+        text, 
+        flags=re.IGNORECASE
+    )
+    return highlighted_text
+
+app.jinja_env.filters['highlight'] = highlight_match
+
 # ROUTES
 
 @app.route('/')
@@ -217,17 +234,18 @@ def cafe():
 
 @app.route('/search', methods=['GET'])
 def search():
-    query = request.args.get('query', '').strip()  # Get and strip leading/trailing whitespace
+    query = request.args.get('query', '').strip().lower()  # Get and clean query
 
-    # If the query is empty or only whitespace, return an empty response
     if not query:
-        return "", 204  # HTTP 204 means "No Content"
+        return "", 204  # Return "No Content" if query is empty
 
-    # Perform the search if the query is not empty
     results = []
     for cafe_dict in data:
         for cafe_id, cafe_info in cafe_dict.items():
-            if query.lower() in cafe_info["name"].lower():  # Case-insensitive search
+            # Case-insensitive search across name, description, and seating type
+            if (query in cafe_info["name"].lower() or
+                query in cafe_info["description"].lower() or
+                any(query in seating.lower() for seating in cafe_info["seating_type"])):
                 results.append(cafe_info)
 
     return render_template('search_results.html', query=query, results=results)
