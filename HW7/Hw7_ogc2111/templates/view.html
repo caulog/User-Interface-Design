@@ -2,24 +2,40 @@
 
 {% block content %}
 <br>
-<h2>{{ cafe['name'] }}</h2>
+<div class="title-container">
+    <h2> {{ cafe['name'] }} </h2>
+    <p> {{ cafe['address'] }}</p>
+    <p>Rating: <strong>{{ cafe['rating'] }}</strong></p>
+</div>
 <br>
-<img src="{{ cafe['image'] }}" alt="Cafe Image" width="400px">
+<div class="cafe-container">
+    <img src="{{ cafe['image'] }}" alt="{{ cafe['image-text'] }}" class="cafe-image">
+
+    <div class="cafe-details">
+        <p><span class="light-grey">Outlets:</span><span class="dark-grey"> {{ cafe['outlets'] }}</span></p>
+        <p><span class="light-grey">Wi-Fi:</span> <span class="dark-grey"> {{ cafe['wifi'] }}</span></p>
+        <p><span class="light-grey">Meeting Friendly:</span> <span class="dark-grey"> {{ cafe['meeting_friendly'] }}</span></p>
+        <p><span class="light-grey">Seating Type:</span> <span class="dark-grey"> {{ cafe['seating_type'] | join(', ') }}</span></p>
+        <p><span class="light-grey">Noise Level:</span> <span class="dark-grey"> {{ cafe['noise_level'] }}</span></p>
+        <p><span class="light-grey">Lighting:</span> <span class="dark-grey"> {{ cafe['lighting'] }}</p>
+        <br>
+        <p><span class="light-grey">Food:</span> <span class="dark-grey"> {{ cafe['food'] }}</span></p>
+        <p><span class="light-grey">Drink:</span> <span class="dark-grey"> {{ cafe['drink'] }}</span></p>
+        <p><span class="light-grey">Pastry:</span> <span class="dark-grey"> {{ cafe['pastry'] }}</span></p>
+        <br>
+        <p><span class="light-grey">Similar Cafes:</span> 
+            <span class="dark-grey">
+                {% for cafe_id in cafe['similar_cafes'] %}
+                    <a class ="clickable" href="{{ url_for('view', id=cafe_id) }}">{{ cafe['name'] }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </span>
+        </p>    
+    </div>
+</div>
 <br>
+<p class="dark-grey"> {{ cafe['description'] }}</p>
 <br>
-<p><strong>Address:</strong> {{ cafe['address'] }}</p>
-<p><strong>Description:</strong> {{ cafe['description'] }}</p>
-<p><strong>Rating:</strong> {{ cafe['rating'] }}</p>
-<p><strong>Outlets:</strong> {{ cafe['outlets'] }}</p>
-<p><strong>Wi-Fi:</strong> {{ cafe['wifi'] }}</p>
-<p><strong>Meeting Friendly:</strong> {{ cafe['meeting_friendly'] }}</p>
-<p><strong>Food:</strong> {{ cafe['food'] }}</p>
-<p><strong>Drink:</strong> {{ cafe['drink'] }}</p>
-<p><strong>Pastry:</strong> {{ cafe['pastry'] }}</p>
-<p><strong>Seating Type:</strong> {{ cafe['seating_type'] | join(', ') }}</p>
-<p><strong>Noise Level:</strong> {{ cafe['noise_level'] }}</p>
-<p><strong>Lighting:</strong> {{ cafe['lighting'] }}</p>
-<br>
+
 {% endblock %}
 
 

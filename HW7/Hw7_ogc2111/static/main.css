@@ -1,5 +1,85 @@
-#hello_div{
-    padding-top:  10px;
-    padding-bottom:  10px;
-    color: rgb(252, 71, 185);
+.base-color{
+    color: #ffcc8c;
+}
+.accent-color{
+    color: #cb7969; 
+}
+.light-grey{
+    color: #b0a4a0
+}
+.dark-grey{
+    color: #706b6a
+}
+.page-heading{
+    background-color: #ffcc8c;
+    height: 75px;
+    padding: 4px;
+}
+.page-heading h2 {
+    margin-bottom: 1px; /* Less space between name and address */
+}
+.page-heading p {
+    margin-bottom: 12px; /* Increase space before the rating */
+}
+.title-container{
+    background-color: #ffcc8c;
+    height: 110px;
+    padding: 4px;
+}
+.title-container h2 {
+    margin-bottom: 1px; /* Less space between name and address */
+}
+.title-container p {
+    margin-bottom: 12px; /* Increase space before the rating */
+}
+.cafe-container {
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px; /* Space between image and text */
+}
+.cafe-details {
+    flex: 1; /* Allow text content to take remaining space */
+    max-width: 600px; /* Adjust width to fit well */
+}
+.cafe-image {
+    width: 650px;  /* Fixed width */
+    height: 450px; /* Fixed height */
+    object-fit: cover; /* Ensures cropping instead of stretching */
+}
+.clickable{
+    text-decoration: underline;
+    color: #cb7969; 
+}
+.clickable:hover {
+    text-decoration: underline;
+    color: #cb7969; 
+    font-weight: bold;
+}
+/* Search Button */
+#search-form .btn {
+    border-color: #cb7969;  /* Accent color for button */
+    color: #cb7969;  /* Text color */
+}
+#search-form .btn:hover {
+    background-color: #cb7969;  /* Accent color on hover */
+    color: white;  /* Text color when hovered */
+    border-color: #cb7969;  /* Keep border color */
+}
+/* Nav bar coloring*/
+.navbar {
+    background-color: #b0a4a0; /* Light grey background */
+}
+.navbar .navbar-nav .nav-link {
+    color: #706b6a; /* Light grey text color for nav links */
+}
+.navbar .navbar-brand {
+    color: #706b6a; /* Light grey text color for brand */
+}
+.navbar .navbar-nav .nav-link:hover {
+    color: #cb7969; /* Accent color on hover */
+    font-weight: bold;
+}
+.navbar .navbar-brand:hover {
+    color: #cb7969; /* Accent color on hover */
+    font-weight: bold;
 }

@@ -1,14 +1,17 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<b><br>Your Headquarters for Remote Work-Friendly Cafes!</b>
-    <br>
-    <br>
+<br>
+<div class="page-heading">
+    <h2> Welcome to Cafe HQ </h2>
+    <p> Your Headquarters for Remote Work-Friendly Cafes!</p>
+</div>
+<br>
 <h2>Search results for "{{ query }}":</h2>
-<ul>
+<ul class = "dark-grey">
     {% for cafe in results %}
         <li>
-            <a href="{{ url_for('view', id=cafe['id']) }}">{{ cafe['name'] }}</a>
+            <a class ="clickable" href="{{ url_for('view', id=cafe['id']) }}">{{ cafe['name'] }}</a>
         </li>
     {% else %}
         <li>No results found.</li>
