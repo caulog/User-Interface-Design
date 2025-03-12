@@ -5,37 +5,62 @@
 <div class="title-container">
     <h2> {{ cafe['name'] }} </h2>
     <p> {{ cafe['address'] }}</p>
-    <p>Rating: <strong>{{ cafe['rating'] }}</strong></p>
+    Rating: <strong>{{ cafe['rating'] }}</strong>
 </div>
-<br>
-<div class="cafe-container">
-    <img src="{{ cafe['image'] }}" alt="{{ cafe['image-text'] }}" class="cafe-image">
 
-    <div class="cafe-details">
-        <p><span class="light-grey">Outlets:</span><span class="dark-grey"> {{ cafe['outlets'] }}</span></p>
-        <p><span class="light-grey">Wi-Fi:</span> <span class="dark-grey"> {{ cafe['wifi'] }}</span></p>
-        <p><span class="light-grey">Meeting Friendly:</span> <span class="dark-grey"> {{ cafe['meeting_friendly'] }}</span></p>
-        <p><span class="light-grey">Seating Type:</span> <span class="dark-grey"> {{ cafe['seating_type'] | join(', ') }}</span></p>
-        <p><span class="light-grey">Noise Level:</span> <span class="dark-grey"> {{ cafe['noise_level'] }}</span></p>
-        <p><span class="light-grey">Lighting:</span> <span class="dark-grey"> {{ cafe['lighting'] }}</p>
-        <br>
-        <p><span class="light-grey">Food:</span> <span class="dark-grey"> {{ cafe['food'] }}</span></p>
-        <p><span class="light-grey">Drink:</span> <span class="dark-grey"> {{ cafe['drink'] }}</span></p>
-        <p><span class="light-grey">Pastry:</span> <span class="dark-grey"> {{ cafe['pastry'] }}</span></p>
-        <br>
-        <p><span class="light-grey">Similar Cafes:</span> 
-            <span class="dark-grey">
-                {% for cafe_id in cafe['similar_cafes'] %}
-                    <a class ="clickable" href="{{ url_for('view', id=cafe_id) }}">{{ cafe['name'] }}</a>{% if not loop.last %}, {% endif %}
-                {% endfor %}
-            </span>
-        </p>    
+<div class="container mt-4">
+    <div class="cafe-container">
+        <img src="{{ cafe['image'] }}" alt="{{ cafe['image-text'] }}" class="cafe-image">
+
+        <div class="cafe-details container">
+            <div class="row">
+                <div class="col-md-4 light-grey"> <!-- Headings Column -->
+                    Outlets: <br>
+                    Wi-Fi: <br>
+                    Meeting Friendly: <br>
+                    Seating Type: <br>
+                    Noise Level:<br>
+                    Lighting:<br>
+                </div>
+                <div class="col-md-8 dark-grey"> <!-- Answers Column -->
+                    {{ cafe['outlets'] }}<br>
+                    {{ cafe['wifi'] }}<br>
+                    {{ cafe['meeting_friendly'] }}<br>
+                    {{ cafe['seating_type'] | join(', ') }}<br>
+                    {{ cafe['noise_level'] }}<br>
+                    {{ cafe['lighting'] }}<br>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4 light-grey">
+                    Food:<br>
+                    Drink:<br>
+                    Pastry:<br>
+                </div>
+                <div class="col-md-8 dark-grey">
+                    {{ cafe['food'] }}<br>
+                    {{ cafe['drink'] }}<br>
+                    {{ cafe['pastry'] }}<br>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4 light-grey">
+                    <p>Similar Cafes:</p>
+                </div>
+                <div class="col-md-8 dark-grey">
+                    {% for cafe_id in cafe['similar_cafes'] %}
+                        <a class="clickable" href="{{ url_for('view', id=cafe_id) }}">{{ cafe['name'] }}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
+    <br>
+    <p  style="font-size: 21px;" class="dark-grey"> {{ cafe['description'] }}</p>
+    <br>
 </div>
-<br>
-<p class="dark-grey"> {{ cafe['description'] }}</p>
-<br>
-
 {% endblock %}
 
 

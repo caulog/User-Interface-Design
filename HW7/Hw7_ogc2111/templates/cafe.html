@@ -6,7 +6,8 @@
     <h2> Welcome to Cafe HQ </h2>
     <p> Your Headquarters for Remote Work-Friendly Cafes!</p>
 </div>
-<br>
+
+<div class="container mt-4">
     <h2>See all our NYC Cafes:</h2>
     <ul class="dark-grey" id="cafe-list">
         {% for cafe_dict in cafes %}
@@ -19,6 +20,7 @@
             {% endfor %}
         {% endfor %}
     </ul>
+</div>
 
     <script src="{{ url_for('static', filename='cafes.js') }}"></script>
 {% endblock %}
