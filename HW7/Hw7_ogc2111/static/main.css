@@ -208,6 +208,7 @@
     background-color: #f8f9fa;
     border-color: #706b6a;  /* Accent color for button */
     color: #706b6a;  /* Text color */
+    width: 150px;
 }
 
 #save-btn:hover {
@@ -219,5 +220,6 @@
     background-color: #f8f9fa;
     border-color: #cb7969;  /* Accent color for button */
     color: #cb7969;  /* Text color */
-    margin-left: 4px;
+    margin-bottom: 5px;
+    width: 150px;
 }

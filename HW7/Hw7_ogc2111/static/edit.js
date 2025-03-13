@@ -12,15 +12,26 @@ $(document).ready(function()  {
     $("#name").focus();
 
     $("#save-btn").click(function() { editCafe(); });
+
+    $("#discard-btn").click(function() { warning(); });
   });
+
+  
+function warning() {
+    $("#discardModal").modal("show"); // Show the modal when the discard button is clicked
+
+    // Handle confirmation button inside the modal
+    $("#confirm-discard").off("click").on("click", function() {
+        const cafeId = $("#cafe-id").val(); // Get the cafe ID from a hidden field
+        window.location.href = "/view/" + encodeURIComponent(cafeId); // Redirect
+    });
+}
   
 
 // Function to handle adding a new cafe
 function editCafe() {
 
     // Initialize vars for error handling
-    console.log("save button pressed");
-    console.log($("#image").val().trim());
 
     let name = $("#name").val().trim();
     let image = $("#image").val().trim();
@@ -40,9 +51,7 @@ function editCafe() {
     let similarCafes = $("#similar_cafes").val().trim();
   
     // Stop execution if there are validation errors
-    console.log("checking errors");
     if (getCafeErrors(name, image, imageText, address, description, rating, seatingType, lighting, similarCafes)) return;
-    console.log("new cafe");
   
     // If no errors, create new_cafe structure to pass to save_cafe on server
     let new_cafe = {
@@ -63,8 +72,6 @@ function editCafe() {
       "lighting": lighting,
       "similar_cafes": similarCafes
     };
-
-    console.log(new_cafe);
   
     // Call the function to save the new cafe
     save_cafe(new_cafe);
