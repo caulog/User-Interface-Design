@@ -3,16 +3,15 @@
 {% block content %}
 <br>
 <div class="page-heading">
-    <h2> Welcome to Cafe HQ </h2>
-    <p> Your Headquarters for Remote Work-Friendly Cafes!</p>
+    <h2> Welcome to Cafe HQ Edit Mode </h2>
 </div>
 
 <input type="hidden" id="cafe-id" value="{{ cafe.id }}">
 
 <div class="container mt-4">
     <h2>
-        <div class="dark-grey">
-            <span style="font-weight: bolder">Caution! </span>
+        <div style="font-size: 24px;" class="dark-grey">
+            <span style="font-weight: bolder;">Caution! </span>
             You are now editing:
         </div>
         <span>{{ cafe['name'] }} </span></h2>
