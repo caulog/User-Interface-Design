@@ -25,10 +25,10 @@
                 <a class="cafe-link" href="{{ url_for('view', id=cafe['id']) }}">{{ cafe['name'] | highlight(query) | safe }}</a>
 
                 <!-- Display Description with reduced margin -->
-                <p class="mt-2"><span class="light-grey">About:</span> {{ cafe['description'] | highlight(query) | safe }}</p>
+                <p class="mt-2"><span style="color: black;">About:</span> {{ cafe['description'] | highlight(query) | safe }}</p>
 
                 <!-- Display Seating Options with consistent spacing -->
-                <p class="mt-2"><span class="light-grey">Seating Options:</span> {{ cafe['seating_type'] | join(', ') | highlight(query) | safe }}</p>
+                <p class="mt-2"><span style="color: black;">Seating Options:</span> {{ cafe['seating_type'] | join(', ') | highlight(query) | safe }}</p>
             </li>
         {% else %}
             <li>No results found.</li>

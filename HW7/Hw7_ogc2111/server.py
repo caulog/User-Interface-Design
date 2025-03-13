@@ -318,18 +318,31 @@ def add():
 
 @app.route('/view/<int:id>')
 def view(id):
-    # Iterate through the list to find the cafe by ID
     cafe = None
+    similar_cafes_data = []  # List to store similar cafes' names and ids
+
+    # Iterate through the list to find the cafe by ID
     for cafe_item in data:
         # Access each cafe by key (which is the string of the number, e.g., '1', '2', etc.)
         if cafe_item.get(str(id)):
             cafe = cafe_item[str(id)]
+
+            # Find the similar cafes by ID and store their names and ids
+            for similar_cafe_id in cafe['similar_cafes']:
+                for item in data:
+                    if item.get(str(similar_cafe_id)):
+                        similar_cafe = item[str(similar_cafe_id)]
+                        similar_cafes_data.append({
+                            'id': similar_cafe['id'],
+                            'name': similar_cafe['name']
+                        })
             break  # Stop the loop once the correct cafe is found
 
     if cafe:
-        return render_template('view.html', cafe=cafe)
+        return render_template('view.html', cafe=cafe, similar_cafes=similar_cafes_data)
     else:
         return "Cafe not found", 404
+
 
 
 if __name__ == '__main__':
