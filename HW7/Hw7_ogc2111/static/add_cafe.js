@@ -11,11 +11,7 @@ $(document).ready(function()  {
 
     $("#name").focus();
 
-    $("#add-cafe-button").click(function(event) {
-        event.preventDefault();  // Prevent form submission
-        console.log("Add Cafe button clicked");
-        addCafe();
-    });
+    $("#add-btn").click(function() { addCafe(); });
   });
   
 
@@ -28,7 +24,7 @@ function addCafe() {
     let imageText = $("#image-text").val().trim();
     let address = $("#address").val().trim();
     let description = $("#description").val().trim();
-    let rating = parseFloat($("#rating").val().trim());
+    let rating = $("#rating").val().trim();
     let outlets = $("#outlets").val().trim();
     let wifi = $("#wifi").val().trim();
     let meetingFriendly = $("#meeting_friendly").val().trim();
@@ -52,7 +48,7 @@ function addCafe() {
       "image_text": imageText,
       "address": address,
       "description": description,
-      "rating": rating,
+      "rating": parseFloat(rating),
       "outlets": outlets,
       "wifi": wifi,
       "meeting_friendly": meetingFriendly,
@@ -117,7 +113,10 @@ function getCafeErrors(name, image, imageText, address, description, rating, sea
     }
 
     // Validate rating
-    if (rating < 0 || rating > 5) {
+    if (rating === ""){
+        showError("Enter a rating.", "#rating-error");
+        hasError = true;
+    } else if (parseFloat(rating) < 0 || parseFloat(rating) > 5 ) {
         showError("Enter a valid rating 0-5.", "#rating-error");
         hasError = true;
     } else {
@@ -148,6 +147,16 @@ function getCafeErrors(name, image, imageText, address, description, rating, sea
         showError("", "#similar-cafes-error");
     }
 
+    let regex = /^(\d+\s*,\s*)*\d+$/;
+
+    // Check if the input matches the pattern
+    if (!regex.test(similarCafes)) {
+        showError("Enter a list of integers seperated by commas (e.g., 1, 2, 3).", "#similar-cafes-error");
+        hasError = true;
+    } else {
+        showError("", "#similar-cafes-error");
+    }
+
     return hasError;
   }
   
@@ -169,8 +178,14 @@ function save_cafe(new_cafe) {
       success: function(result) {
         // Assuming the server returns the updated data dictionary
         let all_data = result["cafes"];  // Server should return updated cafes as a dictionary
+        let new_cafe_id = result["new_cafe_id"];
         data = all_data;
+
+        $("#new-cafe-text").html(`New cafe successfully added. <a class="clickable" href="/view/${new_cafe_id}">See it here</a>.`);
+        $("#new-cafe").show();
           
+        $("#name").focus();
+
         // Clear input fields
         $("#name").val("");
         $("#image").val("");
@@ -178,19 +193,17 @@ function save_cafe(new_cafe) {
         $("#address").val("");
         $("#description").val("");
         $("#rating").val("");
-        $("#outlets").val("");
-        $("#wifi").val("");
-        $("#meeting_friendly").val("");
-        $("#food").val("");
-        $("#drink").val("");
-        $("#pastry").val("");
+        $("#outlets").val("good");
+        $("#wifi").val("yes");
+        $("#meeting_friendly").val("yes");
+        $("#food").val("yes");
+        $("#drink").val("yes");
+        $("#pastry").val("yes");
         $("#seating_type").val("");
-        $("#noise_level").val("");
+        $("#noise_level").val("quiet");
         $("#lighting").val("");
         $("#similar_cafes").val("");
           
-        // Update the view with the new list of cafes
-        //display_cafes_list(data);
       },
       error: function(request, status, error) {
           console.log("Error");

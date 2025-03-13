@@ -306,14 +306,18 @@ def add():
             "similar_cafes": similar_cafes
         }
 
+        new_id = str(current_id)
+
         # Add the new cafe to the data list, indexed by the current_id
         data.append({str(current_id): new_cafe})  # Add the new cafe as a dictionary with the current_id
 
         # Increment current_id for future additions
         current_id += 1
 
+        print(data)
+
         # Return updated cafes data as JSON
-        return jsonify(data=data)
+        return jsonify(data=data, new_cafe_id=new_id)
 
     return render_template("add.html")  # Display the add cafe form
 

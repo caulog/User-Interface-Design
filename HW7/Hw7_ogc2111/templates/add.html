@@ -8,6 +8,10 @@
 </div>
 
 <div class="container mt-4">
+    <div id="new-cafe" style="display: none; font-weight: bold; font-size: 18px;">
+        <p id="new-cafe-text"></p>
+    </div>
+
     <h2>Add a New Cafe</h2>
 
     <div class="row add-row">
@@ -132,7 +136,7 @@
     </div>
 
     <div class="row add-row">
-        <div class="col-2"> Seating Type: </div>
+        <div class="col-2"> Seating Types: </div>
         <div class="col-4 text-input">
             <input class="long-input" type="text" id="seating_type" placeholder="e.g., couches, booths">
         </div>
@@ -155,7 +159,7 @@
     <div class="row add-row">
         <div class="col-2"> Lighting: </div>
         <div class="col-4 text-input">
-            <input class="long-input" type="text" id="lighting" placeholder="e.g., natural, artificial ">
+            <input class="long-input" type="text" id="lighting" placeholder="e.g., natural">
         </div>
         <div id="lighting-error" class="col-4 error-message" style="display: none;">
             <p id="error-text"></p>
@@ -174,7 +178,7 @@
     <br>
     <div class="row add-row">
         <div class="col-2">
-            <button id="add-cafe-button" class="btn">Add Cafe</button>
+           <button id="add-btn" class="btn standard-button">Add Cafe</button>
         </div>
     </div>
 
