@@ -13,7 +13,7 @@
 .page-heading {
     background-color: #ffcc8c;
     padding: 30px 20px;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 .page-heading h2 {
     margin-bottom: 8px;
@@ -171,7 +171,7 @@
 }
 
 
-.add-btn:hover {
+#add-btn:hover {
     background-color: #cb7969;  /* Accent color on hover */
     color: white;  /* Text color when hovered */
     border-color: #cb7969;  /* Keep border color */
@@ -182,4 +182,20 @@
     border-color: #cb7969;  /* Accent color for button */
     color: #cb7969;  /* Text color */
     margin-left: 4px;
+}
+
+.edit-row{
+    margin-top: 100px;
+}
+#edit-btn:hover {
+    background-color: #706b6a;  /* Accent color on hover */
+    color: white;  /* Text color when hovered */
+    border-color: #706b6a;  /* Keep border color */
+}
+#edit-btn{
+    background-color: #f8f9fa;
+    border-color: #706b6a;  /* Accent color for button */
+    color: #706b6a;  /* Text color */
+    margin-left: 4px;
+    width: 100px;
 }

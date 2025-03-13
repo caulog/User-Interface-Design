@@ -66,6 +66,12 @@
     </div>
     <br>
     <p style="font-size: 21px;" class="dark-grey"> <span style="color: black;">About: </span>{{ cafe['description'] }}</p>
+    <div class="row edit-row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <a href="{{ url_for('edit', id=cafe['id']) }}" class="btn standard-button">Edit Cafe</a>
+        </div>
+    </div>
     <br>
 </div>
 {% endblock %}
