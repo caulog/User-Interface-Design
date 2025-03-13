@@ -283,7 +283,7 @@ def add():
 
         # Process similar_cafes if necessary
         if similar_cafes:
-            similar_cafes = [int(id) for id in similar_cafes.split(",")]
+            similar_cafes = [id for id in similar_cafes.split(",")]
 
         # Create a new cafe dictionary with the current_id
         new_cafe = {

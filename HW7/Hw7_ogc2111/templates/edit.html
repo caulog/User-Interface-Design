@@ -20,6 +20,9 @@
         <div class="col-4 text-input">
             <input class="long-input" type="text" id="name" value="{{ cafe.name }}">
         </div>
+        <div id="name-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
     </div>
 
     <div class="row add-row">
@@ -27,12 +30,18 @@
         <div class="col-4 text-input">
             <input class="long-input" type="text" id="image" value="{{ cafe.image }}">
         </div>
+        <div id="image-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
     </div>
 
     <div class="row add-row">
         <div class="col-2"> Image Text: </div>
         <div class="col-4 text-input">
-            <input class="long-input" type="text" id="image-text" value="{{ cafe.image_text }}">
+            <input class="long-input" type="text" id="image_text" value="{{ cafe.image_text }}">
+        </div>
+        <div id="image-text-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
         </div>
     </div>
 
@@ -41,6 +50,9 @@
         <div class="col-4 text-input">
             <input class="long-input" type="text" id="address" value="{{ cafe.address }}">
         </div>
+        <div id="address-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
     </div>
 
     <div class="row add-row">
@@ -48,12 +60,18 @@
         <div class="col-4 text-input">
             <textarea class="long-input" id="description">{{ cafe.description }}</textarea>
         </div>
+        <div id="description-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
     </div>
 
     <div class="row add-row">
         <div class="col-2"> Rating: </div>
         <div class="col-4 text-input">
-            <input type="number" id="rating" step="0.1" min="1" max="5" value="{{ cafe.rating }}">
+            <input style="width: 25%;" type="number"id="rating" step="0.1" min="1" max="5" value="{{ cafe.rating }}">
+        </div>
+        <div id="rating-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
         </div>
     </div>
 
@@ -67,10 +85,104 @@
             </select>
         </div>
     </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Wifi: </div>
+        <div class="col-4 text-input">
+            <select id="wifi">
+                <option value="yes" {% if cafe.wifi == 'yes' %}selected{% endif %}>Yes</option>
+                <option value="no" {% if cafe.wifi == 'no' %}selected{% endif %}>No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Meeting Friendly: </div>
+        <div class="col-4 text-input">
+            <select id="meeting_friendly">
+                <option value="yes" {% if cafe.meeting_friendly == 'yes' %}selected{% endif %}>Yes</option>
+                <option value="no" {% if cafe.meeting_friendly == 'no' %}selected{% endif %}>No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Food: </div>
+        <div class="col-4 text-input">
+            <select id="food">
+                <option value="yes" {% if cafe.food == 'yes' %}selected{% endif %}>Yes</option>
+                <option value="no" {% if cafe.food == 'no' %}selected{% endif %}>No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Drink: </div>
+        <div class="col-4 text-input">
+            <select id="drink">
+                <option value="yes" {% if cafe.drink == 'yes' %}selected{% endif %}>Yes</option>
+                <option value="no" {% if cafe.drink == 'no' %}selected{% endif %}>No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Pastry: </div>
+        <div class="col-4 text-input">
+            <select id="pastry">
+                <option value="yes" {% if cafe.pastry == 'yes' %}selected{% endif %}>Yes</option>
+                <option value="no" {% if cafe.pastry == 'no' %}selected{% endif %}>No</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Seating Types: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="seating_type" value="{{ ', '.join(cafe.seating_type) }}">
+        </div>
+        <div id="seating-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
+    </div>
+
+
+    <div class="row add-row">
+        <div class="col-2"> Noise Level: </div>
+        <div class="col-4 text-input">
+            <select id="noise_level">
+                <option value="quiet" {% if cafe.noise_level == 'quiet' %}selected{% endif %}>Queit</option>
+                <option value="moderate" {% if cafe.noise_level == 'moderate' %}selected{% endif %}>Moderate</option>
+                <option value="loud" {% if cafe.noise_level == 'loud' %}selected{% endif %}>Loud</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Lighting: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="lighting" value="{{ cafe.lighting }}">
+        </div>
+        <div id="lighting-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Similar Cafes: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="similar_cafes" value="{{ ', '.join(cafe.similar_cafes) }}">
+        </div>
+        <div id="similar-cafes-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
+    </div>
+
+
     <div class="row edit-row">
         <div class="col-md-9"></div>
         <div class="col-md-3">
-            <a href="{{ url_for('view', id=cafe['id']) }}" id="save-btn" class="btn standard-button">Save Changes</a>
+            <button id="save-btn" class="btn standard-button">Save Changes</button>
         </div>
     </div>
     <br>
@@ -82,6 +194,8 @@
     </div>
     <br>
 </div>
+
+<script src="{{ url_for('static', filename='edit.js') }}"></script>
 {% endblock %}
 
 
