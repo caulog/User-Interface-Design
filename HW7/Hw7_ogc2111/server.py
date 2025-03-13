@@ -13,7 +13,7 @@ data = [
         "id": "1",
         "name": "Irving Farm UWS",
         "image": "https://media.timeout.com/images/100523819/750/422/image.jpg",
-        "image-text": "Cozy café with wooden tables and chairs, people engaged in conversation and working on laptops, warm lighting creating a welcoming atmosphere.",
+        "image_text": "Cozy café with wooden tables and chairs, people engaged in conversation and working on laptops, warm lighting creating a welcoming atmosphere.",
         "address": "224 W 79th St, New York, NY 10024",
         "description": "Irving Farm UWS is a spacious cafe in the Upper West Side, known for its high-quality coffee and welcoming atmosphere. It offers ample seating, including communal tables and booths, making it a great spot for remote workers. While the cafe has ample outlets and is meeting-friendly, it lacks Wi-Fi, so it's best for those who bring their own hotspot. The natural lighting and moderate noise level create a comfortable work environment for extended stays.",
         "rating": 4.3,
@@ -32,7 +32,7 @@ data = [
         "id": "2",
         "name": "Gem Home",
         "image": "https://assets.vogue.com/photos/6719690afa24f23f9c19c41d/master/w_2560%2Cc_limit/seandavidson_gemhome_29.jpg",
-        "image-text": "A well-lit, modern living space with a mix of contemporary and vintage furnishings, featuring stylish décor and an abundance of natural light.",
+        "image_text": "A well-lit, modern living space with a mix of contemporary and vintage furnishings, featuring stylish décor and an abundance of natural light.",
         "address": "116 Forsyth St, New York, NY 10002",
         "description": "Gem Home is a cozy and aesthetic coffee shop in the Lower East Side, known for its minimalistic design and curated selection of drinks. With bright natural lighting and a quiet ambiance, it's an excellent spot for deep focus work. However, seating is somewhat limited, making it better suited for short work sessions rather than all-day stays. The cafe does not have many outlets, so it's best for those who don't need frequent charging.",
         "rating": 4.6,
@@ -51,7 +51,7 @@ data = [
         "id": "3",
         "name": "Cafe Flor",
         "image": "https://images.happycow.net/venues/1024/41/09/hcmp410952_2994162.jpeg",
-        "image-text": "A cozy café interior with wooden tables, warm lighting, and an abundance of plants.",
+        "image_text": "A cozy café interior with wooden tables, warm lighting, and an abundance of plants.",
         "address": "280 W 14th St, New York, NY 10014",
         "description": "Located in the heart of the West Village, Cafe Flor offers a European-style cafe experience with a relaxed atmosphere. It's a great place for remote workers who need strong Wi-Fi and a variety of seating options. With moderate noise levels and plenty of natural light, it's an ideal space for productivity. The cafe also serves a delicious selection of food and drinks, making it a good spot for long work sessions.",
         "rating": 4.5,
@@ -70,7 +70,7 @@ data = [
         "id": "4",
         "name": "Daily Provisions UWS",
         "image": "https://cdn.vox-cdn.com/thumbor/agX2zDbGHOiZasUsEXfjLdh1HLI=/0x0:2500x1721/1200x800/filters:focal(1050x661:1450x1061)/cdn.vox-cdn.com/uploads/chorus_image/image/65369589/2019_09_30_USHG_FSP2602_JPEG_2500px_DB.0.jpg",
-        "image-text": "Sleek and modern cafe atmosphere that is bright and inviting.",
+        "image_text": "Sleek and modern cafe atmosphere that is bright and inviting.",
         "address": "375 Amsterdam Ave, New York, NY 10024",
         "description": "Daily Provisions UWS is a casual and inviting cafe offering some of the best pastries and coffee in the Upper West Side. While it’s a great place to grab a quick bite, seating is limited, making it less ideal for long work sessions. However, the Wi-Fi is reliable, and the bright atmosphere is perfect for a short productivity boost. The space can get crowded during peak hours, so early mornings are the best time to work here.",
         "rating": 4.4,
@@ -89,7 +89,7 @@ data = [
         "id": "5",
         "name": "Hungarian Pastry Shop",
         "image": "https://static.wixstatic.com/media/7aaea5_78e558ccbf59433c98368fb4427960c8~mv2.jpg/v1/fill/w_640,h_480,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/7aaea5_78e558ccbf59433c98368fb4427960c8~mv2.jpg",
-        "image-text": "Rustic and colorful cafe entrance with outdoor seating and soft ambient lighting inside.",
+        "image_text": "Rustic and colorful cafe entrance with outdoor seating and soft ambient lighting inside.",
         "address": "1030 Amsterdam Ave, New York, NY 10025",
         "description": "A beloved Columbia University hangout, Hungarian Pastry Shop is known for its delicious baked goods and intellectual crowd. The cafe does not have Wi-Fi, but it provides an old-school charm and a distraction-free environment for reading or writing. With ample seating and a warm ambiance, it’s a great space for independent work. However, it’s not the best choice for virtual meetings due to its popularity and noise levels.",
         "rating": 4.7,
@@ -108,7 +108,7 @@ data = [
         "id": "6",
         "name": "Think Coffee",
         "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/53/7d/4d/photo3jpg.jpg?w=900&h=500&s=1",
-        "image-text": "Coffee counter with soft lighting and large windows, featuring patrons working and talking on the phone.",
+        "image_text": "Coffee counter with soft lighting and large windows, featuring patrons working and talking on the phone.",
         "address": "123 4th Ave, New York, NY 10003",
         "description": "Think Coffee is a go-to spot for NYC remote workers looking for a reliable cafe with good Wi-Fi and plenty of outlets. The spacious seating and relaxed environment make it ideal for longer work sessions. The cafe is also known for its sustainability efforts and ethically sourced coffee. It can get busy during peak hours, but early mornings and late afternoons are usually quieter.",
         "rating": 4.2,
@@ -127,7 +127,7 @@ data = [
             "id": "7",
             "name": "Bibliotheque",
             "image": "https://cdn.prod.website-files.com/63e1538a40b51fa38c1b20fe/657ca5f5d2ebb92c60541965_Unknown-2.jpeg",
-            "image-text": "Large couches and comfy booths surrounded by stacks of books and unqiue art.",
+            "image_text": "Large couches and comfy booths surrounded by stacks of books and unqiue art.",
             "address": "45 Mercer St, New York, NY 10013",
             "description": "A quiet haven for book lovers and remote workers, Bibliotheque combines a charming library ambiance with high-quality coffee. Its Wi-Fi is strong, making it a popular choice for students and freelancers alike. The cafe has a mix of seating options, from individual study nooks to communal tables. It tends to be quiet during the mornings and early afternoons but gets busier in the evenings.",
             "rating": 4.8,
@@ -146,7 +146,7 @@ data = [
             "id": "8",
             "name": "Pause Cafe",
             "image": "https://www.tagvenue.com/resize/53/76/fit-900-600;45596-entire-venue-room.jpeg",
-            "image-text": "Bohemian and rustic cafe with large communal table and warm, inviting lighting.",
+            "image_text": "Bohemian and rustic cafe with large communal table and warm, inviting lighting.",
             "address": "3 Clinton St, New York, NY 10002",
             "description": "Pause Cafe is a laid-back spot with a vibrant and colorful interior. The cafe is great for both work and casual meetups, offering a variety of drinks and Mediterranean-inspired snacks. Outlets are limited, so it's best for shorter work sessions. The Wi-Fi is reliable, and the noise level is usually moderate, making it a decent choice for remote work.",
             "rating": 4.4,
@@ -165,7 +165,7 @@ data = [
             "id": "9",
             "name": "Urban Backyard",
             "image": "https://images.squarespace-cdn.com/content/v1/5edaf010f96c3956a9022210/1cdbc83d-4c1a-4de0-bccc-ee6b876184cd/UB2022-inside.jpg",
-            "image-text": "Industrial aesthetic coffee counter with people working at a small table.",
+            "image_text": "Industrial aesthetic coffee counter with people working at a small table.",
             "address": "180 Mulberry St, New York, NY 10012",
             "description": "Urban Backyard is a charming, eco-friendly cafe with a focus on sustainability and plant-based offerings. The space is small but thoughtfully designed, making it a cozy spot for a quick work session. With good Wi-Fi and a peaceful atmosphere, it's a great choice for solo workers who don't mind the limited seating. Their matcha and specialty lattes are a highlight.",
             "rating": 4.6,
@@ -184,7 +184,7 @@ data = [
             "id": "10",
             "name": "Georgie's",
             "image": "https://images.squarespace-cdn.com/content/v1/6706df485e8ac00b3501747c/1569f5ae-9a9c-444a-84e3-e1fb959d7612/georgies+cafe+bar+nyc+les.png?format=2500w",
-            "image-text": "Large communal table in the center of a room flooded with natural light an an abudance of plants.",
+            "image_text": "Large communal table in the center of a room flooded with natural light an an abudance of plants.",
             "address": "37 E 8th St, New York, NY 10003",
             "description": "Georgie's is a stylish, modern cafe with great Wi-Fi and plenty of seating. It's popular among students and remote workers due to its reliable connectivity and comfortable chairs. The cafe serves a wide variety of drinks and pastries, making it a good all-day work location. However, it can get quite busy during peak hours, so finding a seat might be a challenge.",
             "rating": 4.5,
@@ -290,7 +290,7 @@ def add():
             "id": str(current_id),  # ID is now a string, matching the structure of existing data
             "name": name,
             "image": image,
-            "image-text": image_text,
+            "image_text": image_text,
             "address": address,
             "description": description,
             "rating": rating,
@@ -314,39 +314,28 @@ def add():
         # Increment current_id for future additions
         current_id += 1
 
-        print(data)
-
         # Return updated cafes data as JSON
         return jsonify(data=data, new_cafe_id=new_id)
 
     return render_template("add.html")  # Display the add cafe form
 
-@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+@app.route('/edit/<id>', methods=['GET', 'POST'])
 def edit(id):
     cafe = None
-    similar_cafes_data = []  # List to store similar cafes' names and ids
+    for cafe_dict in data:
+        if id in cafe_dict:
+            cafe = cafe_dict[id]
+            break  # Stop searching once found
 
-    # Iterate through the list to find the cafe by ID
-    for cafe_item in data:
-        # Access each cafe by key (which is the string of the number, e.g., '1', '2', etc.)
-        if cafe_item.get(str(id)):
-            cafe = cafe_item[str(id)]
-
-            # Find the similar cafes by ID and store their names and ids
-            for similar_cafe_id in cafe['similar_cafes']:
-                for item in data:
-                    if item.get(str(similar_cafe_id)):
-                        similar_cafe = item[str(similar_cafe_id)]
-                        similar_cafes_data.append({
-                            'id': similar_cafe['id'],
-                            'name': similar_cafe['name']
-                        })
-            break  # Stop the loop once the correct cafe is found
-
-    if cafe:
-        return render_template('edit.html', cafe=cafe, similar_cafes=similar_cafes_data)
-    else:
+    if cafe is None:
         return "Cafe not found", 404
+
+    if request.method == 'POST':
+        updated_cafe = request.json  # Assuming JSON data
+        cafe.update(updated_cafe)
+        return jsonify({"message": "Cafe updated successfully", "cafe": cafe})
+
+    return render_template('edit.html', cafe=cafe)
 
 
 @app.route('/view/<int:id>')

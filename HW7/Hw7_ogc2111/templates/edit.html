@@ -2,71 +2,71 @@
 
 {% block content %}
 <br>
-YOU ARE NOW EDITING THE CAFE
-<div class="title-container">
-    <h2> {{ cafe['name'] }} </h2>
-    <p> {{ cafe['address'] }}</p>
-    Rating: <strong>{{ cafe['rating'] }}</strong>
+<div class="page-heading">
+    <h2> Welcome to Cafe HQ </h2>
+    <p> Your Headquarters for Remote Work-Friendly Cafes!</p>
 </div>
 
 <div class="container mt-4">
-    <div class="cafe-container">
-        <img src="{{ cafe['image'] }}" alt="{{ cafe['image-text'] }}" class="cafe-image">
-
-        <div class="cafe-details container">
-            <div class="row">
-                <div class="col-md-4"> Outlets: </div>
-                <div class="col-md-8 dark-grey"> {{ cafe['outlets'] }} </div>
-            </div>
-                <div class="row">
-                    <div class="col-md-4"> Wi-Fi:</div>
-                    <div class="col-md-8 dark-grey"> {{ cafe['wifi'] }} </div>
-                </div>
-                <div class="row"> 
-                    <div class="col-md-4">  Meeting Friendly: </div>
-                    <div class="col-md-8 dark-grey"> {{ cafe['meeting_friendly'] }} </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4"> Seating Options: </div>
-                    <div class="col-md-8 dark-grey"> {{ cafe['seating_type'] | join(', ') }} </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4"> Noise Level: </div>
-                    <div class="col-md-8 dark-grey"> {{ cafe['noise_level'] }} </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4"> Lighting: </div>
-                    <div class="col-md-8 dark-grey"> {{ cafe['lighting'] }} </div>
-                </div>  
-            <br>
-
-            <div class="row">
-                <div class="col-md-4"> Food: </div>
-                <div class="col-md-8 dark-grey"> {{ cafe['food'] }} </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"> Drink: </div>
-                <div class="col-md-8 dark-grey"> {{ cafe['drink'] }} </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"> Pastry: </div>
-                <div class="col-md-8 dark-grey"> {{ cafe['pastry'] }} </div>
-            </div>
-
-            <br>
-            <div class="row">
-                <div class="col-md-4"> Similar Cafes: </div>
-                <div class="col-md-8 dark-grey">
-                    {% for similar_cafe in similar_cafes %}
-                        <a class="clickable" href="{{ url_for('view', id=similar_cafe['id']) }}">{{ similar_cafe['name'] }}</a>{% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                </div>
-            </div>            
-            
+    <h2>
+        <div class="dark-grey">
+            <span style="font-weight: bolder">Caution! </span>
+            You are now editing:
+        </div>
+        <span>{{ cafe['name'] }} </span></h2>
+    <br>
+    <div class="row add-row">
+        <div class="col-2"> Cafe Name: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="name" value="{{ cafe.name }}">
         </div>
     </div>
-    <br>
-    <p style="font-size: 21px;" class="dark-grey"> <span style="color: black;">About: </span>{{ cafe['description'] }}</p>
+
+    <div class="row add-row">
+        <div class="col-2"> Image URL: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="image" value="{{ cafe.image }}">
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Image Text: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="image-text" value="{{ cafe.image_text }}">
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Address: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="address" value="{{ cafe.address }}">
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Description: </div>
+        <div class="col-4 text-input">
+            <textarea class="long-input" id="description">{{ cafe.description }}</textarea>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Rating: </div>
+        <div class="col-4 text-input">
+            <input type="number" id="rating" step="0.1" min="1" max="5" value="{{ cafe.rating }}">
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Outlets: </div>
+        <div class="col-4 text-input">
+            <select id="outlets">
+                <option value="good" {% if cafe.outlets == 'good' %}selected{% endif %}>Good</option>
+                <option value="bad" {% if cafe.outlets == 'bad' %}selected{% endif %}>Bad</option>
+                <option value="ample" {% if cafe.outlets == 'ample' %}selected{% endif %}>Ample</option>
+            </select>
+        </div>
+    </div>
     <div class="row edit-row">
         <div class="col-md-9"></div>
         <div class="col-md-3">

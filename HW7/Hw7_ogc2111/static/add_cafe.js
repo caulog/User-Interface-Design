@@ -21,7 +21,7 @@ function addCafe() {
     // Initialize vars for error handling
     let name = $("#name").val().trim();
     let image = $("#image").val().trim();
-    let imageText = $("#image-text").val().trim();
+    let imageText = $("#image_text").val().trim();
     let address = $("#address").val().trim();
     let description = $("#description").val().trim();
     let rating = $("#rating").val().trim();
@@ -189,7 +189,7 @@ function save_cafe(new_cafe) {
         // Clear input fields
         $("#name").val("");
         $("#image").val("");
-        $("#image-text").val("");
+        $("#image_text").val("");
         $("#address").val("");
         $("#description").val("");
         $("#rating").val("");
