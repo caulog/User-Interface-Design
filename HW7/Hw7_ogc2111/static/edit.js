@@ -172,41 +172,19 @@ function getCafeErrors(name, image, imageText, address, description, rating, sea
 
 // Save the new cafe to the server
 function save_cafe(new_cafe) {
+    const cafeId = $("#cafe-id").val();  // Make sure you have the cafe ID available in the form
+
     $.ajax({
-      type: "POST",
-      url: "add",  // Adjust to your Flask route for adding a cafe
-      dataType: "json",  // Assuming the server returns JSON
-      contentType: "application/json; charset=utf-8",
-      data: JSON.stringify(new_cafe),
-      success: function(result) {
-        // Assuming the server returns the updated data dictionary
-        let all_data = result["cafes"];  // Server should return updated cafes as a dictionary
-        let new_cafe_id = result["new_cafe_id"];
-        data = all_data;
-
-        $("#new-cafe-text").html(`New cafe successfully added. <a class="clickable" href="/view/${new_cafe_id}">See it here</a>.`);
-        $("#new-cafe").show();
-          
-        $("#name").focus();
-
-        // Clear input fields
-        $("#name").val("");
-        $("#image").val("");
-        $("#image_text").val("");
-        $("#address").val("");
-        $("#description").val("");
-        $("#rating").val("");
-        $("#outlets").val("good");
-        $("#wifi").val("yes");
-        $("#meeting_friendly").val("yes");
-        $("#food").val("yes");
-        $("#drink").val("yes");
-        $("#pastry").val("yes");
-        $("#seating_type").val("");
-        $("#noise_level").val("quiet");
-        $("#lighting").val("");
-        $("#similar_cafes").val("");
-          
+        type: "POST",
+        url: "/edit/" + cafeId,  // Send the ID in the URL
+        dataType: "json",  // Assuming the server returns JSON
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(new_cafe),
+        success: function(result) {
+            // Assuming the server returns the updated cafe
+            let updated_cafe = result["cafe"];  // The updated cafe from the server
+            window.location.href = "/view/" + encodeURIComponent(cafeId);
+            
       },
       error: function(request, status, error) {
           console.log("Error");

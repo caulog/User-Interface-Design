@@ -280,7 +280,6 @@ def add():
         if seating_type:
             seating_type = seating_type.split(",")  # Split the comma-separated values into a list
 
-
         # Process similar_cafes if necessary
         if similar_cafes:
             similar_cafes = [id for id in similar_cafes.split(",")]
@@ -332,11 +331,19 @@ def edit(id):
 
     if request.method == 'POST':
         updated_cafe = request.json  # Assuming JSON data
+
+        # Reconstruct list fields properly
+        if "seating_type" in updated_cafe and isinstance(updated_cafe["seating_type"], str):
+            updated_cafe["seating_type"] = [s.strip() for s in updated_cafe["seating_type"].split(",")]
+
+        if "similar_cafes" in updated_cafe and isinstance(updated_cafe["similar_cafes"], str):
+            updated_cafe["similar_cafes"] = [s.strip() for s in updated_cafe["similar_cafes"].split(",")]
+
         cafe.update(updated_cafe)
+
         return jsonify({"message": "Cafe updated successfully", "cafe": cafe})
 
     return render_template('edit.html', cafe=cafe)
-
 
 @app.route('/view/<int:id>')
 def view(id):
