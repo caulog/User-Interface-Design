@@ -68,9 +68,16 @@ YOU ARE NOW EDITING THE CAFE
     <br>
     <p style="font-size: 21px;" class="dark-grey"> <span style="color: black;">About: </span>{{ cafe['description'] }}</p>
     <div class="row edit-row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2">
-            <button id="edit-btn" class="btn standard-button">Edit Cafe</button>
+        <div class="col-md-9"></div>
+        <div class="col-md-3">
+            <a href="{{ url_for('view', id=cafe['id']) }}" id="save-btn" class="btn standard-button">Save Changes</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-9"></div>
+        <div class="col-md-3">
+            <a href="{{ url_for('view', id=cafe['id']) }}" id="discard-btn" class="btn standard-button">Discard Changes</a>
         </div>
     </div>
     <br>

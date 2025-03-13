@@ -176,7 +176,6 @@
     color: white;  /* Text color when hovered */
     border-color: #cb7969;  /* Keep border color */
 }
-
 #add-btn{
     background-color: #f8f9fa;
     border-color: #cb7969;  /* Accent color for button */
@@ -198,4 +197,27 @@
     color: #706b6a;  /* Text color */
     margin-left: 4px;
     width: 100px;
+}
+
+#discard-btn:hover {
+    background-color: #706b6a;  /* Accent color on hover */
+    color: white;  /* Text color when hovered */
+    border-color: #706b6a;  /* Keep border color */
+}
+#discard-btn{
+    background-color: #f8f9fa;
+    border-color: #706b6a;  /* Accent color for button */
+    color: #706b6a;  /* Text color */
+}
+
+#save-btn:hover {
+    background-color: #cb7969;  /* Accent color on hover */
+    color: white;  /* Text color when hovered */
+    border-color: #cb7969;  /* Keep border color */
+}
+#save-btn{
+    background-color: #f8f9fa;
+    border-color: #cb7969;  /* Accent color for button */
+    color: #cb7969;  /* Text color */
+    margin-left: 4px;
 }
