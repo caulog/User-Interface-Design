@@ -5,7 +5,7 @@
     color: #cb7969; 
 }
 .light-grey{
-    color: #b0a4a0
+    color: #f8f9fa
 }
 .dark-grey{
     color: #706b6a
@@ -59,12 +59,13 @@
     font-weight: bold;
 }
 /* Search Button */
-#search-form .btn {
+.btn {
+    background-color: #f8f9fa;
     border-color: #cb7969;  /* Accent color for button */
     color: #cb7969;  /* Text color */
     margin-left: 4px;
 }
-#search-form .btn:hover {
+.btn:hover {
     background-color: #cb7969;  /* Accent color on hover */
     color: white;  /* Text color when hovered */
     border-color: #cb7969;  /* Keep border color */
