@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+You are now editing the cafe.
+<br>
+<div class="title-container">
+    <h2> {{ cafe['name'] }} </h2>
+    <p> {{ cafe['address'] }}</p>
+    Rating: <strong>{{ cafe['rating'] }}</strong>
+</div>
+
+<div class="container mt-4">
+    <div class="cafe-container">
+        <img src="{{ cafe['image'] }}" alt="{{ cafe['image-text'] }}" class="cafe-image">
+
+        <div class="cafe-details container">
+            <div class="row">
+                <div class="col-md-4 light-grey"> Outlets: </div>
+                <div class="col-md-8 dark-grey"> {{ cafe['outlets'] }} </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-4 light-grey"> Wi-Fi:</div>
+                    <div class="col-md-8 dark-grey"> {{ cafe['wifi'] }} </div>
+                </div>
+                <div class="row"> 
+                    <div class="col-md-4 light-grey">  Meeting Friendly: </div>
+                    <div class="col-md-8 dark-grey"> {{ cafe['meeting_friendly'] }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 light-grey"> Seating Type: </div>
+                    <div class="col-md-8 dark-grey"> {{ cafe['seating_type'] | join(', ') }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 light-grey"> Noise Level: </div>
+                    <div class="col-md-8 dark-grey"> {{ cafe['noise_level'] }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 light-grey"> Lighting: </div>
+                    <div class="col-md-8 dark-grey"> {{ cafe['lighting'] }} </div>
+                </div>  
+            <br>
+
+            <div class="row">
+                <div class="col-md-4 light-grey"> Food: </div>
+                <div class="col-md-8 dark-grey"> {{ cafe['food'] }} </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 light-grey"> Drink: </div>
+                <div class="col-md-8 dark-grey"> {{ cafe['drink'] }} </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 light-grey"> Pastry: </div>
+                <div class="col-md-8 dark-grey"> {{ cafe['pastry'] }} </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-md-4 light-grey"> Similar Cafes: </div>
+                <div class="col-md-8 dark-grey">
+                    {% for cafe_id in cafe['similar_cafes'] %}
+                        <a class="clickable" href="{{ url_for('view', id=cafe_id) }}">{{ cafe['name'] }}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <br>
+    <p  style="font-size: 21px;" class="dark-grey"> {{ cafe['description'] }}</p>
+    <br>
+</div>
+{% endblock %}
+
+
+

@@ -1,11 +1,11 @@
 from flask import Flask
 from flask import render_template
-from flask import Response, request, jsonify
+from flask import Response, request, jsonify, redirect, url_for
 import re
 app = Flask(__name__)
 
 
-current_id = 10
+current_id = 11
 fav_cafes = ["1", "3", "6"]
 data = [
     {
@@ -249,6 +249,71 @@ def search():
                 results.append(cafe_info)
 
     return render_template('search_results.html', query=query, results=results)
+
+
+@app.route('/add', methods=['GET', 'POST'])
+def add():
+    global current_id  # Access the global current_id
+
+    if request.method == "POST":
+        # Get form data
+        name = request.form.get("name")
+        image = request.form.get("image")
+        image_text = request.form.get("image-text")
+        address = request.form.get("address")
+        description = request.form.get("description")
+        rating = request.form.get("rating")
+        outlets = request.form.get("outlets")
+        wifi = request.form.get("wifi")
+        meeting_friendly = request.form.get("meeting_friendly")
+        food = request.form.get("food")
+        drink = request.form.get("drink")
+        pastry = request.form.get("pastry")
+        seating_type = request.form.get("seating_type")
+        noise_level = request.form.get("noise_level")
+        lighting = request.form.get("lighting")
+        similar_cafes = request.form.get("similar_cafes")
+
+        # Handle the seating_type field properly
+        if seating_type:
+            seating_type = seating_type.split(",")  # Split the comma-separated values into a list
+
+
+        # Process similar_cafes if necessary
+        if similar_cafes:
+            similar_cafes = [int(id) for id in similar_cafes.split(",")]
+
+        # Create a new cafe dictionary with the current_id
+        new_cafe = {
+            "id": str(current_id),  # ID is now a string, matching the structure of existing data
+            "name": name,
+            "image": image,
+            "image_text": image_text,
+            "address": address,
+            "description": description,
+            "rating": rating,
+            "outlets": outlets,
+            "wifi": wifi,
+            "meeting_friendly": meeting_friendly,
+            "food": food,
+            "drink": drink,
+            "pastry": pastry,
+            "seating_type": seating_type,
+            "noise_level": noise_level,
+            "lighting": lighting,
+            "similar_cafes": similar_cafes
+        }
+
+        # Add the new cafe to the data list, indexed by the current_id
+        data.append({str(current_id): new_cafe})  # Add the new cafe as a dictionary with the current_id
+
+        # Increment current_id for future additions
+        current_id += 1
+
+        # Return updated cafes data as JSON
+        return jsonify(cafes=data)
+
+    return render_template("add.html")  # Display the add cafe form
 
 
 @app.route('/view/<int:id>')

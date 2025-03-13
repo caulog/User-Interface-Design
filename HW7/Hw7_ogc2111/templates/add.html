@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<br>
+<div class="page-heading">
+    <h2> Welcome to Cafe HQ </h2>
+    <p> Your Headquarters for Remote Work-Friendly Cafes!</p>
+</div>
+
+<div class="container mt-4">
+    <h2>Add a New Cafe</h2>
+
+    <form action="/add" method="POST">
+        <div class="form-group">
+            <label for="name">Cafe Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image URL</label>
+            <input type="text" class="form-control" id="image" name="image" required>
+        </div>
+
+        <div class="form-group">
+            <label for="image-text">Image Text</label>
+            <input type="text" class="form-control" id="image-text" name="image-text" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Cafe Address</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Cafe Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <input type="number" class="form-control" id="rating" name="rating" step="0.1" min="1" max="5" required>
+        </div>
+
+        <div class="form-group">
+            <label for="outlets">Outlets</label>
+            <select class="form-control" id="outlets" name="outlets" required>
+                <option value="good">Good</option>
+                <option value="bad">Bad</option>
+                <option value="ample">Ample</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="wifi">Wi-Fi</label>
+            <select class="form-control" id="wifi" name="wifi" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="meeting_friendly">Meeting Friendly</label>
+            <select class="form-control" id="meeting_friendly" name="meeting_friendly" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="food">Food</label>
+            <select class="form-control" id="food" name="food" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="drink">Drink</label>
+            <select class="form-control" id="drink" name="drink" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pastry">Pastry</label>
+            <select class="form-control" id="pastry" name="pastry" required>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="seating_type">Seating Type</label>
+            <input type="text" class="form-control" id="seating_type" name="seating_type" placeholder="e.g., communal tables, booths" required>
+        </div>
+
+        <div class="form-group">
+            <label for="noise_level">Noise Level</label>
+            <select class="form-control" id="noise_level" name="noise_level" required>
+                <option value="quiet">Quiet</option>
+                <option value="moderate">Moderate</option>
+                <option value="loud">Loud</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="lighting">Lighting</label>
+            <input type="text" class="form-control" id="lighting" name="lighting" required>
+        </div>
+
+        <div class="form-group">
+            <label for="similar_cafes">Similar Cafes (IDs)</label>
+            <input type="text" class="form-control" id="similar_cafes" name="similar_cafes" placeholder="e.g., 1,2,3" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Add Cafe</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='cafes.js') }}"></script>
+
+{% endblock %}
