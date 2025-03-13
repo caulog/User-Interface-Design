@@ -148,3 +148,24 @@
     text-decoration: none;
     color: #cb7969;
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    height: 12px;
+}
+
+.text-input {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 0 !important;
+}
+
+.add-row{
+    padding-bottom: 8px;
+}
+
+.long-input{
+    width: 100%;
+}

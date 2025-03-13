@@ -10,114 +10,178 @@
 <div class="container mt-4">
     <h2>Add a New Cafe</h2>
 
-    <form action="/add" method="POST">
-        <div class="form-group">
-            <label for="name">Cafe Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+    <div class="row add-row">
+        <div class="col-2"> Cafe Name: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="name" placeholder="Cafe Name">
         </div>
-
-        <div class="form-group">
-            <label for="image">Image URL</label>
-            <input type="text" class="form-control" id="image" name="image" required>
+        <div id="name-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="image-text">Image Text</label>
-            <input type="text" class="form-control" id="image-text" name="image-text" required>
+    <div class="row add-row">
+        <div class="col-2"> Image URL: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="image" placeholder="Image URL">
         </div>
-
-        <div class="form-group">
-            <label for="address">Cafe Address</label>
-            <input type="text" class="form-control" id="address" name="address" required>
+        <div id="image-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="description">Cafe Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+    <div class="row add-row">
+        <div class="col-2"> Image Text: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="image-text" placeholder="Image Text">
         </div>
-
-        <div class="form-group">
-            <label for="rating">Rating</label>
-            <input type="number" class="form-control" id="rating" name="rating" step="0.1" min="1" max="5" required>
+        <div id="image-text-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="outlets">Outlets</label>
-            <select class="form-control" id="outlets" name="outlets" required>
+    <div class="row add-row">
+        <div class="col-2"> Address: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="address" placeholder="Cafe Address">
+        </div>
+        <div id="address-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Description: </div>
+        <div class="col-4 text-input">
+            <textarea class="long-input" id="description" placeholder="Description"></textarea>
+        </div>
+        <div id="description-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Rating: </div>
+        <div class="col-4 text-input">
+            <input style="width: 25%;" type="number" id="rating" step="0.1" min="1" max="5" placeholder="Rating">
+        </div>
+        <div id="rating-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
+    </div>
+
+    <div class="row add-row">
+        <div class="col-2"> Outlets: </div>
+        <div class="col-4 text-input">
+            <select id="outlets">
                 <option value="good">Good</option>
                 <option value="bad">Bad</option>
                 <option value="ample">Ample</option>
             </select>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="wifi">Wi-Fi</label>
-            <select class="form-control" id="wifi" name="wifi" required>
+    <div class="row add-row">
+        <div class="col-2"> Wi-Fi: </div>
+        <div class="col-4 text-input">
+            <select id="wifi">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="meeting_friendly">Meeting Friendly</label>
-            <select class="form-control" id="meeting_friendly" name="meeting_friendly" required>
+    <div class="row add-row">
+        <div class="col-2"> Meeting Friendly: </div>
+        <div class="col-4 text-input">
+            <select id="meeting_friendly">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="food">Food</label>
-            <select class="form-control" id="food" name="food" required>
+    <div class="row add-row">
+        <div class="col-2"> Food: </div>
+        <div class="col-4 text-input">
+            <select id="food">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="drink">Drink</label>
-            <select class="form-control" id="drink" name="drink" required>
+    <div class="row add-row">
+        <div class="col-2"> Drink: </div>
+        <div class="col-4 text-input">
+            <select id="drink">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="pastry">Pastry</label>
-            <select class="form-control" id="pastry" name="pastry" required>
+    <div class="row add-row">
+        <div class="col-2"> Pastry: </div>
+        <div class="col-4 text-input">
+            <select id="pastry">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="seating_type">Seating Type</label>
-            <input type="text" class="form-control" id="seating_type" name="seating_type" placeholder="e.g., communal tables, booths" required>
+    <div class="row add-row">
+        <div class="col-2"> Seating Type: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="seating_type" placeholder="e.g., couches, booths">
         </div>
+        <div id="seating-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
+    </div>
 
-        <div class="form-group">
-            <label for="noise_level">Noise Level</label>
-            <select class="form-control" id="noise_level" name="noise_level" required>
+    <div class="row add-row">
+        <div class="col-2"> Noise Level: </div>
+        <div class="col-4 text-input">
+            <select id="noise_level">
                 <option value="quiet">Quiet</option>
                 <option value="moderate">Moderate</option>
                 <option value="loud">Loud</option>
             </select>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="lighting">Lighting</label>
-            <input type="text" class="form-control" id="lighting" name="lighting" required>
+    <div class="row add-row">
+        <div class="col-2"> Lighting: </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="lighting" placeholder="e.g., natural, artificial ">
         </div>
-
-        <div class="form-group">
-            <label for="similar_cafes">Similar Cafes (IDs)</label>
-            <input type="text" class="form-control" id="similar_cafes" name="similar_cafes" placeholder="e.g., 1,2,3" required>
+        <div id="lighting-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
         </div>
+    </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Add Cafe</button>
-    </form>
+    <div class="row add-row">
+        <div class="col-2"> Similar Cafes (IDs): </div>
+        <div class="col-4 text-input">
+            <input class="long-input" type="text" id="similar_cafes" placeholder="e.g., 1,2,3">
+        </div>
+        <div id="similar-cafes-error" class="col-4 error-message" style="display: none;">
+            <p id="error-text"></p>
+        </div>
+    </div>
+    <br>
+    <div class="row add-row">
+        <div class="col-2">
+            <button id="add-cafe-button" class="btn">Add Cafe</button>
+        </div>
+    </div>
+
 </div>
+
 <br>
 <script src="{{ url_for('static', filename='cafes.js') }}"></script>
+<script src="{{ url_for('static', filename='add_cafe.js') }}"></script>
 
 {% endblock %}

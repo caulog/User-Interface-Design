@@ -256,23 +256,25 @@ def add():
     global current_id  # Access the global current_id
 
     if request.method == "POST":
+        json_data = request.get_json()
+        print(json_data)
         # Get form data
-        name = request.form.get("name")
-        image = request.form.get("image")
-        image_text = request.form.get("image-text")
-        address = request.form.get("address")
-        description = request.form.get("description")
-        rating = request.form.get("rating")
-        outlets = request.form.get("outlets")
-        wifi = request.form.get("wifi")
-        meeting_friendly = request.form.get("meeting_friendly")
-        food = request.form.get("food")
-        drink = request.form.get("drink")
-        pastry = request.form.get("pastry")
-        seating_type = request.form.get("seating_type")
-        noise_level = request.form.get("noise_level")
-        lighting = request.form.get("lighting")
-        similar_cafes = request.form.get("similar_cafes")
+        name = json_data["name"]
+        image = json_data["image"]
+        image_text = json_data["image_text"]
+        address = json_data["address"]
+        description = json_data["description"]
+        rating = json_data["rating"]
+        outlets = json_data["outlets"]
+        wifi = json_data["wifi"]
+        meeting_friendly = json_data["meeting_friendly"]
+        food = json_data["food"]
+        drink = json_data["drink"]
+        pastry = json_data["pastry"]
+        seating_type = json_data["seating_type"]
+        noise_level = json_data["noise_level"]
+        lighting = json_data["lighting"]
+        similar_cafes = json_data["similar_cafes"]
 
         # Handle the seating_type field properly
         if seating_type:
@@ -288,7 +290,7 @@ def add():
             "id": str(current_id),  # ID is now a string, matching the structure of existing data
             "name": name,
             "image": image,
-            "image_text": image_text,
+            "image-text": image_text,
             "address": address,
             "description": description,
             "rating": rating,
@@ -311,7 +313,7 @@ def add():
         current_id += 1
 
         # Return updated cafes data as JSON
-        return jsonify(cafes=data)
+        return jsonify(data=data)
 
     return render_template("add.html")  # Display the add cafe form
 
